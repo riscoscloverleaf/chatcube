@@ -1,0 +1,18 @@
+Simple example TBX application to show hooking events to
+toolbox gadgets.
+
+Running the application puts an icon on the iconbar.
+
+The iconbar menu gives two options.
+- show the application information
+- quit the application.
+
+Clicking select on the iconbar shows the "Reverse text" window.
+
+This window consists of:
+- a writeable field for you to enter some text in.
+- a display field that will show the number of characters
+  currently in the writeable field.
+- a "Reverse text" button that will reverse the text in the
+  writeable field.
+

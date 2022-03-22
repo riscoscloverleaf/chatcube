@@ -1,0 +1,6 @@
+{# inspired by errorception.com #}
+<script type="text/javascript">
+var jslogger = {errors: [], endpoint: '{% url "errorlogging:add_log" %}'};
+{% block meta_data %}{% endblock %}
+window.onerror = function (){jslogger.errors.push(arguments)};
+</script>

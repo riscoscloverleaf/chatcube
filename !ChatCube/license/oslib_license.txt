@@ -1,0 +1,40 @@
+OSLib is copyright © 1994, 1998 Jonathan Coxhead. It is distributed in the 
+hope that it will be useful, but without any warranty; without even the implied 
+warranty of merchantability or fitness for a particular purpose.
+
+Jonathan wrote OSLib during the time that he was employed by Acorn Computers 
+Ltd during the mid-1990s, as a private project, but generously ceded the 
+copyright for specific versions to them. For that reason OSLib version 5.1 was 
+available from the Acorn Computers FTP site under their copyright. With the 
+demise of Acorn in 1999, their FTP site was closed, and this is now the only 
+supported source for OSLib.
+
+After Jonathan left Acorn in 1995, he continued with the development of OSLib, 
+and in December 1998 released version 5.3 as free source software under the GNU 
+General Public licence version 1, or (at your option) any later version.
+
+Under the conditions of this licence, the term 'free' is used in the context of 
+'unfettered' rather than 'gratis'. It means that the source code is freely 
+available, and that anyone may use it to build and distribute a version of 
+their own, with the two provisos that they make no charge for it, other than 
+the reasonable cost of the distribution media, and that they redistribute all 
+copyright and ownership notices intact. The new distribution may not be under 
+more onerous terms than the original.
+
+The copyright holder has granted a small relaxation of the conditions of the 
+GNU Public Licence, in that OSLib is itself free software, but applications 
+linked to it need not be. This means that any changes to OSLib itself (the 
+contents of the OSLib, OSLibHelp, OSLibSrc, and OSLibSupport archives) fall 
+under the terms of the GNU General Public Licence; but programs written using 
+OSLib need not be so restricted.
+
+In other words, OSLib may be freely used in the construction of proprietary 
+software. However, do please consider joining the ever increasing free software 
+movement, by releasing your work under an Open Source approved license. Free 
+source is good; hoarded source bad!
+
+Naturally, although anyone may make a distribution, it does not make much sense 
+for lots of different distributions with different capabilities to spring up, 
+and the developer team therefore request that any submissions for inclusion be 
+routed here. This is the sole reference site for OSLib supported by the author 
+and copyright holder, Jonathan Coxhead.

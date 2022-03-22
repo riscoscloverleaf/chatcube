@@ -1,0 +1,164 @@
+<chapter>
+<title>Graphics</title>
+<para>
+  When your user interface can not be completely built with
+  the standard toolbox gadgets you will need to be able to
+  draw your own graphics in a Window.
+</para>
+<para>
+  The WIMP informs an application when part of its window needs
+  drawing by sending it a messages and then providing it with
+  one or more non overlapping rectangles to draw within. The
+  WIMP also sets the clipping rectangle to the rectangle it
+  gives so standard graphic commands will not draw outside of
+  it.
+</para>
+  <para>
+    A flag on the Window resource tells the WIMP that it wants
+    to draw part or all of the window itself. Unless this flag
+    is set the WIMP will not send the messages.
+  </para>
+  <section>
+    <title>Redraw listeners</title>
+    <para>
+      In the TBX library the rectangles to redraw are passed to one or more
+      redraw listeners derived from class <classname>tbx::RedrawListener</classname>
+      via the <methodname>redraw</methodname> method. The information about
+      what needs to be redrawn is handed to the method in a <classname>tbx::RedrawEvent</classname>
+      object.
+    </para>
+    <para>
+      The <classname>tbx::RedrawEvent</classname> has two members, the visible_area and the clip
+      box. The visible_area return a <classname>tbx::VisibleArea</classname> object which gives
+      information about the visible area of the Window. It also contains useful functions to
+      convert between work area co-ordinates and screen co-ordinates. The clip box gives
+      the area that needs to be redrawn in screen co-ordinates. By using the clip box
+      you can reduce the amount you need to redraw.
+    </para>
+  </section>
+  <section>
+    <title>Graphics class</title>
+    <para>
+      TBX provides classes derived from <classname>tbx::Graphics</classname>
+      to make it easy to draw graphics, text and images to the screen. In
+      particular the <classname>tbx::OffsetGraphics</classname> makes it
+      easy to paint your window in a redraw loop.
+    </para>
+    <example>
+      <title>Redrawing a screen using OffsetGraphics</title>
+      <para>
+        First you need to attach a redraw listener after you have
+        a window to attach it to.
+        <programlisting>
+          // this is a class derived from tbx::RedrawListener
+          window.add_redraw_listener(this);
+        </programlisting>
+        Then you can easily draw graphics and text in the redraw method.
+        <programlisting>
+          void GraphicsWnd::redraw(const tbx::RedrawEvent &amp;e)
+          {
+            tbx::OffsetGraphics g(e.visible_area());
+            g.text_colours(tbx::Colour::black, tbx::Colour::white);
+
+            g.text(0,-32, "This shows some of the facilities of the graphics object");
+
+            g.text(0,-160,"A line");
+            g.line(160,-160, 256, -160);
+
+            g.text(0,-288, "A filled circle");
+            g.foreground(tbx::Colour(0,255, 0));
+            g.fill_circle(232, -280, 32);
+
+            g.foreground(tbx::Colour::black);
+            g.text(0,-668, "Fonts");
+            tbx::Font corpus("Corpus.Medium", tbx::os_to_points_16th(48));
+            g.text(160,-668, "This text is in Corpus Medium font", corpus);
+
+            // Get and show user sprite from sprites loaded with application
+            tbx::UserSprite us = app()->sprite_area()->get_sprite("example");
+            g.image(320, -752, us);
+          }
+        </programlisting>
+      </para>
+    </example>
+  </section>
+  <section>
+    <title>Displaying text</title>
+    <para>
+      The Graphics classes in the last section can be used to display text. However
+      if you only want to display text you may want to paint it using either of
+      the two font classes provided. The <classname>tbx::WimpFont</classname> class
+      provides a simple way of painting text using the current desktop font. The
+      <classname>tbx::Font</classname> class allows you to use any outline font
+      installed on your system. Both classes provide a <methodname>paint</methodname>
+      method to paint a given string on the screen.
+    </para>
+    <para>
+      The <classname>tbx::WimpFont</classname> class only has a few simple operations
+      that can be done with it other than painting. This should be adequate for
+      most simple text painting requirements. If you need to use some of the
+      more advanced methods available in the <classname>tbx::Font</classname> class
+      then you can create a <classname>tbx::Font</classname> that uses the desktop
+      font by calling its <methodname>desktop_font</methodname> method.
+    </para>
+    <para>
+      The <classname>tbx::Font</classname> class needs to be constructed with
+      a font name and size or the <methodname>find_font</methodname> method has
+      to be called to initialise the font.
+      In both cases you can check if the font was found on the system by calling
+      the <methodname>is_valid</methodname> method.
+    </para>
+  </section>
+  <section>
+    <title>Displaying images</title>
+    <para>
+      TBX has classes built in to display Sprites, JPEGs and DrawFiles.
+      They are all derived from the <classname>tbx::Image</classname> class 
+      which provides a simple method called <methodname>plot</methodname>
+      that plots the image full size at the given location on the screen.
+    </para>
+    <para>
+      Each of the sub classes provides methods to load the images,
+      to find out more information about the image, and plot it in
+      different ways. The main image subclasses are <classname>tbx::Sprite</classname>,
+      <classname>tbx::DrawFile</classname> and <classname>tbx:JPEG</classname>.
+    </para>
+    <para>
+      The standard bitmap image format in RISC OS is the sprite. There
+      are two location these can come from in TBX. Using the class
+      <classname>tbx::WimpSprite</classname> you can plot sprites
+      from the WIMP sprite pool. The class <classname>tbx::UserSprite</classname>
+      is used to plot sprites from application memory.
+    </para>
+    <para>
+      The <classname>tbx::UserSprite</classname> class is a reference
+      to a sprite in a user sprite area. The <classname>tbx::SpriteArea</classname>
+      class is responsible for managing a number of sprites. It provides methods
+      to load and save the whole sprite area and create new sprites.
+      TBX provides a method <methodname>sprite_area</methodname>
+      on the <classname>tbx::Application</classname> class which gives a
+      pointer to the sprite area automatically loaded from the file "Sprites"
+      by the Toolbox.
+    </para>
+  </section>
+  <section>
+    <title>Drawings</title>
+    <para>
+      You can output paths to the screen using vector graphics.
+      The <classname>tbx::DrawPath</classname> encapsulates methods to create
+      and display paths that will be rendered using the RISC OS Draw module.
+    </para>
+    <para>
+      Using these paths it is possible to draw shapes consisting of bezier
+      curves, control how lines are drawn (including the thickness) and
+      how shapes are filled.
+    </para>
+    <para>
+      The graphics classes contain methods to draw the outlines (stroke) or
+      fill a draw path positioning it at a given location. They internally set
+      up the transform required by the <classname>tbx::DrawPath</classname>
+      to position it and to treat the user coordinates used by the path
+      as if they were specified as OS coordinates.
+    </para>
+  </section>
+</chapter>

@@ -1,0 +1,93 @@
+<chapter>
+<title>Creating a Document based application</title>
+  <para>
+    A document based application is an application that has a
+    specific file type associated with it that it edits.
+  </para>
+  <para>
+   A document based application has the following features.
+   <itemizedlist>
+     <listitem>Creates a new document when clicking on the iconbar</listitem>
+     <listitem>Loads a document if it is dropped on the iconbar</listitem>
+     <listitem>Opens a document if it is double clicked in the filer</listitem>
+     <listitem>Shows a window with the document contents</listitem>
+     <listitem>Updates the title of the window with the filename and a "*" if a document is modified</listitem>
+     <listitem>Shows a SaveAs window to allowing saving of the file</listitem>
+     <listitem>Shows the Discard/Cancel/Save dialogue when trying to close a window with modified content</listitem>
+     <listitem>Shows the Quit dialogue if you try to quit the application with unsaved documents</listitem>
+     <listitem>Provides a FileInfo window to show details of the current document</listitem>
+   </itemizedlist>
+  </para>
+  <para>To set up a file type for your document you need to add the following entries to your
+  <filename>!Boot</filename> and <filename>!Run</filename> files so the Desktop can identify your file type and
+  launch your application if it is double clicked upon in the filer.
+  <programlisting>
+    | Variables need to be added (in this case for TbxDocEx file type hex 010)
+    
+    | Let the desktop know what to do to edit this file type
+    Set Alias$RunType_010 Run &lt;Obey$Dir&gt;.!Run %%*0
+    | Set The description for the file type
+    Set File$Type_010 "TbxDocEx"    
+  </programlisting>
+  You will also need to add an icon to your <filename>!Sprites</filename> file for display in the filer.
+  This is the usual 34x17 sprite the same size as your application sprite, but with the
+  name file_XXX where XXX is your file type number. (In the above example it would be file_010).
+  </para>
+  <para>
+    tbx provides a group of classes to provide a framework in the <package>tbx::doc</package> namespace
+    for all of this standard functionality. You do not have
+    to use this framework, you can instead add listeners to the application for the WIMP messages
+    you need to process for this type of application and the necessary toolbox objects and functionality.
+  </para>
+  <para>
+    To use the <package>tbx::doc</package> classes you need to create and add the following
+    resources to your <filename>Res</filename>.
+    <itemizedlist>
+      <listitem>An Iconbar named "Iconbar"</listitem>
+      <listitem>A main Window (the name of it is passed to the DocWindow constructor)</listitem>
+      <listitem>A SaveAs dialogue called "SaveAs"</listitem>
+      <listitem>A DCS dialogue called "DCS"</listitem>
+      <listitem>A Quit dialogue called "Quit"</listitem>
+      <listitem>A FileInfo dialogue called "FileInfo"</listitem>
+      <listitem>An icon bar menu with at least the Quit option</listitem>
+      <listitem>A menu for the main window that has entries to show the SaveAs and FileInfo windows</listitem>
+    </itemizedlist>
+    You then add the following code to you <function>main</function> function.
+    <programlisting>
+      tbx::Application docex_app("&lt;TbxDocEx$Dir&gt;");
+      tbx::doc::DocCreator&lt;TbxExDoc, TbxExWnd&gt; doc_creator(0x010);
+      tbx::doc::DocManager doc_manager(&amp;doc_creator);
+      tbx::doc::DocIconbar doc_iconbar;
+      tbx::doc::DocSaveAs doc_saveas;
+      tbx::doc::DocFileInfo doc_fileinfo;
+
+      if (argc > 1) doc_manager.load_files(argc-1, argv+1);
+
+      docex_app.run();
+    </programlisting>
+    In the above listing the following would be replaced with items for your application.
+    TbxDocEx$Dir would be replaced with the path name for your resources.
+    <classname>TbxExDoc</classname> would be your document class (derived
+    from <classname>tbx::doc::Document</classname>).
+    <classname>TbxExWnd</classname> would be
+    your class to handle the display of the document (derived from <classname>tbx::doc::DocWindow</classname>).
+  </para>
+  <para>
+    With this code in place all that is then needed is to derive your document from <classname>tbx::doc::Document</classname>
+    (TbxExDoc in the example code above) and overload the <methodname>document_size</methodname>,
+    <methodname>load(std::istream &amp;is)</methodname> and <methodname>save(std::ostream &amp;os)</methodname>
+    methods.
+  </para>
+  <para>
+     The window to display the document should be derived from tbx::doc::DocWindow
+     and modified to show the data when it is created.
+    </para>
+  <para>
+    If more functionality is required from the iconbar you may want to derive
+    a class from <classname>tbx::doc::DocIconbar</classname> as well.
+  </para>
+  <para>
+    There is a demo application called !TbxDocEx included in the separate TBX-Examples download
+    that shows a simple document based application.
+  </para>
+</chapter>

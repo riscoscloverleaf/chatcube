@@ -1,0 +1,30 @@
+{% extends "ik/emails/layout.html" %}
+{% load i18n %}
+
+{% block subject_content %}{% if total_unread > 1 %}{% trans "You have unread messages" %}{% else %}{% trans "You have unread message" %}{% endif %}{% endblock %} %}
+
+{% block html_content %}
+<p>{% trans "You have unread messages in the following chats:" %}</p>
+<table cellpadding="2" border="0">
+    <tr>
+        <th align="left">{% trans "Chat" %}</th>
+        <th align="right">{% trans "Unread messages" %}&nbsp;&nbsp;</th>
+        <th align="right">{% trans "Last message" %}</th>
+    </tr>
+    {% for chat in unread_chats %}
+    <tr>
+        <td>{% if chat.is_group %}Group: {% endif %}{{ chat.chat_title }}</td>
+        <td align="right">{{ chat.unread_count }}&nbsp;&nbsp;</td>
+        <td>{{ chat.last_message.sendtime|date:"Y-m-d H:i:s" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block plain_content %}
+Chat                                     Unread messages         Last message
+------------------------------------------------------------------------------
+{% for chat in unread_chats %}{% if chat.is_group %}Group: {{ chat.chat_title|ljust:"33" }}{% else %}{{ chat.chat_title|ljust:"40" }}{% endif %} {{ chat.unread_count|rjust:"15" }}   {{ chat.last_message.sendtime|date:"Y-m-d H:i:s" }}
+{% endfor %}
+{% endblock %}

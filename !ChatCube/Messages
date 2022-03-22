@@ -1,0 +1,143 @@
+_TaskName:ChatCube
+Version:1.31
+# Messages exported from Resource File version 101
+
+# Messages for object MainWindow (class Window)
+
+MainWindow|1:ChatCube
+
+# Messages for object IbarMenu (class Menu)
+
+IbarMenu|0:ChatCube
+IbarMenu|1:This is ChatCube main menu.
+IbarMenu|2:Info
+IbarMenu|3:Information on this application.
+IbarMenu|4:Options...
+IbarMenu|5:Clicking here enables the alteration of the application's general configuration.
+IbarMenu|6:Quit
+IbarMenu|7:Click here to exit the application.
+
+# Messages for object Options (class Window)
+
+Options|0:This dialogue box may be used to alter the application's general configuration.
+Options|1:Options
+Options|3:Privacy
+Options|5:Set
+Options|7:Cancel
+Options|9:Save
+Options|11:Show public
+Options|12:It allows to find other members by nearby location
+Options|13:Share location
+Options|15:Show Timeline
+Options|17:Public
+Options|19:Friends only
+
+# Messages for object MainToolbar (class Window)
+
+MainToolbar|3:friends_icon
+MainToolbar|5:chat_icon
+MainToolbar|7:time_icon
+MainToolbar|9:cog_icon
+
+# Messages for object LoginWindow (class Window)
+
+LoginWindow|1:Please login
+LoginWindow|3:E-mail
+LoginWindow|4:Please enter your e-mail
+LoginWindow|8:Password
+LoginWindow|9:Enter your password
+LoginWindow|13:Login
+LoginWindow|15:Cancel
+LoginWindow|16:Don't have account? Register here
+LoginWindow|17:Register
+LoginWindow|19:logo_text
+LoginWindow|21:Reset password
+
+# Messages for object ChatRoom (class Window)
+
+ChatRoom|1:Chat Room
+ChatRoom|2:Enter message here
+ChatRoom|5:Upload and send file
+ChatRoom|6:attach_sm
+ChatRoom|7:Send message
+ChatRoom|8:send_msg
+ChatRoom|9:Open smilies panel
+ChatRoom|10:Make screenshot
+ChatRoom|11:Make a video call
+ChatRoom|12:Make a voice call
+ChatRoom|13:Send your location
+
+# Messages for object UploadTLBR (class Window)
+
+UploadTLBR|2:Drag and drop file here
+UploadTLBR|3:Drag and drop file here to start upload
+UploadTLBR|5:File upload progress
+
+# Messages for object Register (class Window)
+
+Register|1:Registration
+Register|3:E-mail
+Register|4:Enter your e-mail here
+Register|8:Display name
+Register|9:This name will be visible to other people
+Register|13:Password
+Register|14:Enter your password here
+Register|18:Confirm password
+Register|19:Confirm your password
+Register|22:Register to chat
+Register|23:Register
+Register|25:Cancel
+Register|26:Select or type your system
+Register|27:Raspberry,Acorn RiscPC,Acorn A5000,Acorn A3000,Lyonix,Titan,Titanium,PCEMU,Cloverleaf
+Register|28:System
+Register|29:Raspberry
+Register|32:Phone
+Register|37:Your system
+
+# Messages for object NotImplemen (class Window)
+
+NotImplemen|1:Not implemented
+NotImplemen|3:Sorry, this feature will be implemented later
+NotImplemen|5:Close
+
+# Messages for object ProgInfo (class Window)
+
+ProgInfo|1:About program
+ProgInfo|3:logo
+ProgInfo|5:ChatCube
+ProgInfo|7:Multi Client  Messenger for RISCOS
+ProgInfo|9:Version 0.01
+ProgInfo|11:Part of RISCOS CloverLeaf project
+ProgInfo|13:www.riscoscloverleaf.com
+ProgInfo|15:Project Manager: Stefan Frohling
+ProgInfo|17:Programmed by:
+ProgInfo|19:Aleksey Murushkin
+ProgInfo|21:Sergey Lentsov
+
+# Messages for object ImageMenu (class Menu)
+
+ImageMenu|0:Image
+ImageMenu|2:Save as...
+
+# Messages for object reset1 (class Window)
+
+reset1|1:Reset password
+reset1|3:Phone
+reset1|8:or Email
+reset1|13:Send verification code
+reset1|15:Cancel
+
+# Messages for object reset2 (class Window)
+
+reset2|1:Enter verification code
+reset2|3:Code
+reset2|8:Check verification code
+reset2|10:Cancel
+
+# Messages for object reset3 (class Window)
+
+reset3|1:Set new password
+reset3|3:New password
+reset3|8:Repeat password
+reset3|13:Set new password
+reset3|15:Cancel

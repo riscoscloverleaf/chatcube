@@ -1,0 +1,15 @@
+[Unit]
+Description=rochat
+After=mysql.service
+
+[Service]
+Type=notify
+KillSignal=SIGQUIT
+ExecStart=/home/xxx/xxxsite/pythonenv/bin/uwsgi --ini /home/xxx/xxxsite/conf/uwsgi-prod.ini
+RestartSec=10
+Restart=always
+User=rochat
+Group=www
+
+[Install]
+WantedBy=multi-user.target

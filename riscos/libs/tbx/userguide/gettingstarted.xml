@@ -1,0 +1,122 @@
+<chapter>
+<title>Getting started</title>
+<section>
+<title>Files for a RISC OS Toolbox application</title>
+<variablelist><title>Minimum Files for a RISC OS Toolbox application</title>
+<varlistentry><term><filename>!appname</filename></term>
+<listitem>
+<para>
+Directory for the application. It should start with an "!" mark. All the other files
+are contained within this application.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>!Boot</filename></term>
+<listitem>
+<para>
+The <filename>!Boot</filename> file is run when the application is seen by the filer.
+This is used to set up system variables for file types for the application and set the application sprite file.
+It can be omitted if all it is needed for is to set the application sprite file
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>!Run</filename></term>
+<listitem>
+<para>
+The <filename>!Run</filename> file is run when the application is double clicked on and sets up the environment before running
+the application itself.
+ For a Toolbox application it will use the RMEnsure command to ensure the correct Toolbox modules are loaded,
+ sets any system variable the application may need (e.g. the application directory),
+ set the amount of memory the application requires to start up using the WimpSlot command
+ and finally runs the application itself.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>!RunImage</filename></term>
+<listitem>
+<para>
+The <filename>!RunImage</filename> is the executable code of the application and is launched by the run file.
+</para>
+</listitem>
+</varlistentry>
+
+
+<varlistentry><term><filename>!Sprites</filename></term>
+<listitem>
+<para>
+The <filename>!Sprites</filename> contains the applications sprites to be loaded on the system.
+ This includes the application icon and icons for any file types the application provides.
+ There are also variations of this file with numeric suffixes to provide the sprites at different resolutions.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>Messages</filename></term>
+<listitem>
+<para>
+The <filename>Messages</filename> contains the translatible messages for the application. For a Toolbox application it also contains some special tags for the task name and other details.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>Res</filename></term>
+<listitem>
+<para>
+The <filename>Res</filename> contains the Toolbox resources for the application. This is the definition of the dialogues and Windows and is usually created/edited by !ResEd.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><filename>Sprites</filename></term>
+<listitem>
+<para>
+The <filename>Sprites</filename> contains sprites to be used within the application that will be automatically loaded when the application starts up. This file is only included if the application needs these sprites.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>
+Details of what needs to go into each of these files will be shown in later chapters. The majority of what is needed will be shown in the following "Minimal TBX application" chapter.
+</para>
+</section>
+
+<section>
+<title>Using the TBX library</title>
+<para>
+If installed with a package manager the TBX path will already be set up, otherwise double click on the !TBX application to set the path.
+</para>
+<para>
+The library is in ELF format so you will need to compile your application using GCC4 or later.
+</para>
+<para>
+To include the library for your source use:
+</para>
+<para>
+-ITBX: on the compile line
+</para>
+<para>
+and include the classes using
+</para>
+<programlisting>
+include "tbx/tbxclass.h"
+</programlisting>
+<para>
+All classes are in the tbx namespace so either put using namespace tbx at the beginning of your source file or prefix the class with tbx::
+</para>
+<para>
+To link the library add the following to the linker line
+</para>
+<para>
+-LTBX: -ltbx 
+</para>
+<example><title>Compiling and linking a single source file program to TBX</title>
+<screen>
+<command>g++</command> -ITBX: main.cc
+<command>g++</command> -o !RunImage -LTBX: -ltbx main.o
+</screen>
+</example>
+</section>
+
+</chapter>

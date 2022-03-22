@@ -1,0 +1,10 @@
+| Obey file to make all examples
+
+Wimpslot -min 16384K
+Dir <Obey$Dir>
+make -C !Graphics/src
+make -C !IconView/src
+make -C !Reverse/src
+make -C !StopWatch/src
+make -C !TbxDocEx/src
+make -C !TbxMin/src

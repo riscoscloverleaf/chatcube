@@ -1,0 +1,20 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creating the application code</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch03.html" title="Chapter 3. Creating a minimal desktop application"><link rel="prev" href="ch03s02.html" title="Creating the application files"><link rel="next" href="ch03s04.html" title="Building the application"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating the application code</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Creating a minimal desktop application</th><td width="20%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr></table><hr></div><div class="section" title="Creating the application code"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36098696"></a>Creating the application code</h2></div></div></div><p>For this example we will put the source code in a subdirectory called <code class="filename">src</code>.</p><p>We also need a subdirectory of this called <code class="filename">cc</code> to store the C++ source code.</p><p>In the <code class="filename">cc</code> directory create a new text file called <code class="filename">main</code> with the following contents.</p><pre class="programlisting">
+#include "tbx/application.h"                     <a name="tbxmin.include"></a><img src="images/callouts/1.png" alt="1" border="0">
+
+int main()                                       <a name="tbxmin.main"></a><img src="images/callouts/2.png" alt="2" border="0">
+{
+   tbx::Application tbx_min_app("&lt;TbxMin$Dir&gt;"); <a name="tbxmin.app"></a><img src="images/callouts/3.png" alt="3" border="0">
+
+   tbx_min_app.run();                            <a name="tbxmin.run"></a><img src="images/callouts/4.png" alt="4" border="0">
+
+   return 0;
+}
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#tbxmin.include"><img src="images/callouts/1.png" alt="1" border="0"></a> </p></td><td valign="top" align="left"><p>
+Include file for the tbx <code class="classname">Application</code> class.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#tbxmin.main"><img src="images/callouts/2.png" alt="2" border="0"></a> </p></td><td valign="top" align="left"><p>
+Main entry point for a C++ program.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#tbxmin.app"><img src="images/callouts/3.png" alt="3" border="0"></a> </p></td><td valign="top" align="left"><p>
+Create a tbx application object giving it the location of the application resources. It is this object that starts up the Toolbox and implements the event processing.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#tbxmin.run"><img src="images/callouts/4.png" alt="4" border="0"></a> </p></td><td valign="top" align="left"><p>
+The application is run here. The Toolbox and Wimp events are all routed here. This routine doesn't finish until the quit event (defined in the resources above) or the quit WIMP message is received or the <code class="function">quit()</code> method is called on the application object.
+</p></td></tr></table></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Creating the application files </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Building the application</td></tr></table></div></body></html>

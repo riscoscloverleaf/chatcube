@@ -1,0 +1,8 @@
+# c++ intermediate files
+*.o
+*.d
+*.a
+timestamp
+*.ipch
+*.bin
+docs/html/*

@@ -1,0 +1,30 @@
+{% extends "ik/layout.html" %}
+{% load i18n iktags %}
+
+{% block extstyle %}
+<style type="text/css">
+.history td { vertical-align: top; padding: 3px 5px; }
+.in { background-color: #d6eafe;}
+.out { background-color: #d8f4d2;}
+</style>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<p>{% trans "History for: " %}<b>{{ chat.title }}</b></p>
+<table cellpadding="2" border="0"  cellspacing="0" cellpadding="0" width="100%" class="history">
+    {% for msg in messages %}
+    <tr class="{% if msg.author.id != me.id %}in{% else %}out{% endif %}">
+        <td class="nowrap">{{ msg.sendtime|date:"Y-m-d H:i:s" }}</td>
+        <td>{{ msg.author.first_name }}</td>
+        <td>{% if msg.type == constants.MESSAGE_TYPE_PHOTO %}{% set msg.attachment_image as f %}<a href="{{ f.url }}" target="_blank"><img src="{{ f.thumb_url }}"></a>
+            {% elif msg.type == constants.MESSAGE_TYPE_FILE %}{% set msg.attachment_file as f %}<a href="{{ f.url }}" target="_blank">{{ f.name }} ({{ f.size|filesizeformat }})</a>
+            {% elif msg.type == constants.MESSAGE_TYPE_STICKER %}{% set msg.attachment_image as f %}<img src="{{ f.url }}">
+            {% else %}{{ msg.text }}{% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

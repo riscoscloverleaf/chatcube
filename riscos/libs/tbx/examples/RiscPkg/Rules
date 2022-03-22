@@ -1,0 +1,28 @@
+VERSION = 0.6-2
+PACKAGES = \
+ TBX-Examples_$(VERSION)
+INSTALL_TO=Temp/Apps/Development
+
+all: pkg
+
+
+pkg:
+	rm -rf Temp
+	mkdir -p Temp/RiscPkg
+	mkdir -p $(INSTALL_TO)
+	svn export .  $(INSTALL_TO)/TbxExamples
+	rm -f $(INSTALL_TO)/TbxExamples/RiscPkg/Control
+	rm -f $(INSTALL_TO)/TbxExamples/RiscPkg/Rules
+	rm -f $(INSTALL_TO)/TbxExamples/RiscPkg/TBX-Examples.inc
+	make -C Temp -f ../RiscPkg/Rules $(PACKAGES)
+	rm -rf Temp
+
+.PHONY: $(PACKAGES)
+$(PACKAGES): %:
+	riscpkg-gencontrol $(firstword $(subst _, ,$@)) < ../RiscPkg/Control > RiscPkg/Control
+	rm -f ../RiscPkg/$@
+	set StoreSuffix <UnixEnv$$zip$$sfix>
+	set UnixEnv$$zip$$sfix \"\"
+	zip -r ../RiscPkg/$@ * -i@../RiscPkg/$(firstword $(subst _, ,$@)).inc
+	set UnixEnv$$zip$$sfix <StoreSuffix>
+	unset StoreSuffix

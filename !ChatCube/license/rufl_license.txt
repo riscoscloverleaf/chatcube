@@ -1,0 +1,3 @@
+Licensed under the MIT License,
+                http://www.opensource.org/licenses/mit-license
+Copyright 2006 James Bursa <james@semichrome.net>

@@ -1,0 +1,158 @@
+<chapter>
+<title>Creating a minimal desktop application</title>
+
+<para>This chapter shows how to create a minimal working desktop application using the TBX library.
+ It will show the contents of the standard Toolbox application files.</para>
+<para>The application will be called TbxMin.</para>
+<para>A faster way to get started on writing an application would be to use the !TbxAppGen application which will automatically generate a set of default files for you to modify, but I believe it is always useful to go through the steps by hand first to get a better idea of what is needed.</para>
+
+<section>
+<title>TbxMin description</title>
+<para>TbxMin will put an icon on the iconbar when it is run from the filer. Pressing Menu over this icon will show a menu with options to show information on the application and to quit the application.</para>
+<para>TbxMin uses very little of the TBX library, just enough to run an application. All user interaction is controlled by the Toolbox.</para>
+</section>
+<section>
+<title>Creating the application files</title>
+<para>The first thing to create is the application directory <filename>!TbxMin</filename>. Once created all other files are created under this.</para>
+<para>All Toolbox applications need a messages file with two special tags in. Create a file called <filename>Messages</filename> with the following contents.
+</para>
+<programlisting>
+_TaskName:Minimun TBX application
+_TaskSprite:!tbxmin
+</programlisting>
+<para>Next we want to give the application an icon in the filer view and one to use on the iconbar when the application is run. To do this we create a sprite file <filename>!Sprites</filename> that contains a single mode 12 sprite sized 34x17 named !tbxmin. This sprite can be created with !Paint.</para>
+<para>All the GUI objects used in the application are defined in the resource file. Using !ResEdit create a new resource file <filename>Res</filename> as follows:
+<orderedlist>
+<listitem>Add an iconbar icon.</listitem>
+<listitem>Set its auto create and show object flags.</listitem>
+<listitem>Edit the iconbar icon definition so that it's sprite is set to "!tbxmin" and it has a menu named "IBMenu".</listitem>
+<listitem>Add a menu and rename it to "IBMenu".</listitem>
+<listitem>Add a menu item with the text "Info" that shows the object "ProgInfo" as a submenu.</listitem>
+<listitem>Add a menu item with the text "Quit" that raises the event &amp;82a91. When the tbx application receives this event number it knows it must quit.</listitem>
+<listitem>Finally add a proginfo dialogue.</listitem>
+</orderedlist>
+</para>
+<para>We also need to create an obey file <filename>!Run</filename> to ensure the Toolbox modules are loaded and launch the application. Create the <filename>!Run</filename> with the following contents.</para>
+<programlisting>
+| Run file for TbxMin application                                        <co id="run.comment"/>
+
+RMEnsure Toolbox 1.36 RMLoad System:Modules.Toolbox.Toolbox              <co id="run.toolbox"/>
+RMEnsure Toolbox 1.36 Error This application needs Toolbox 1.36 or later.
+RMEnsure IconBar 0.00 RMLoad System:Modules.Toolbox.IconBar              <co id="run.modules"/>
+RMEnsure IconBar 1.12 Error This application needs IconBar 1.12 or later.
+RMEnsure Menu 0.00 RMLoad System:Modules.Toolbox.Menu
+RMEnsure Menu 0.24 Error This application needs Menu 0.24 or later.
+RMEnsure ProgInfo 0.00 RMLoad System:Modules.Toolbox.ProgInfo
+RMEnsure ProgInfo 0.09 Error This application needs ProgInfo 0.09 or later.
+
+Wimpslot -min 2048K -max 2048K                                           <co id="run.wimpslot"/>
+
+Set TbxMin$Dir &lt;Obey$Dir&gt;                                                <co id="run.directory"/>
+
+Run &lt;TbxMin$Dir&gt;.!RunImage %*0                                           <co id="run.run"/>
+</programlisting>
+<calloutlist>
+<callout arearefs="run.comment">
+<para>
+This is a comment line that is ignored when the file is run.
+</para>
+</callout>
+<callout arearefs="run.toolbox">
+<para>
+All Toolbox applications must ensure the toolbox modules is loaded. The first line loads it if it is not already loaded and the second line checks the version is high enough for this application and reports an error and stops if it is not.
+</para>
+</callout>
+<callout arearefs="run.modules" id="runmodules">
+<para>
+The other toolbox modules needed by the application are loaded here.
+</para>
+</callout>
+<callout arearefs="run.wimpslot">
+<para>
+Set the initial size the application requires. C++ programs compiled with GCC will grow the wimpslot as they run if necessary, but you still need enough space allocated to start the program up. The value chosen here "2048" is just a guess it will need to be adjusted (probably to a smaller value) once we have the application finished.
+</para>
+</callout>
+<callout arearefs="run.directory">
+<para>
+This command sets a system variable with the location of this application. It is used so the application knows where to load it resources.
+</para>
+</callout>
+<callout arearefs="run.run">
+<para>
+This is the line the launches the application.
+</para>
+</callout>
+</calloutlist>
+</section>
+
+<section><title>Creating the application code</title>
+<para>For this example we will put the source code in a subdirectory called <filename>src</filename>.</para>
+<para>We also need a subdirectory of this called <filename>cc</filename> to store the C++ source code.</para>
+<para>In the <filename>cc</filename> directory create a new text file called <filename>main</filename> with the following contents.</para>
+
+<programlisting>
+#include "tbx/application.h"                     <co id="tbxmin.include"/>
+
+int main()                                       <co id="tbxmin.main"/>
+{
+   tbx::Application tbx_min_app("&lt;TbxMin$Dir&gt;"); <co id="tbxmin.app"/>
+
+   tbx_min_app.run();                            <co id="tbxmin.run" />
+
+   return 0;
+}
+</programlisting>
+<calloutlist>
+<callout arearefs="tbxmin.include">
+<para>
+Include file for the tbx <classname>Application</classname> class.
+</para>
+</callout>
+<callout arearefs="tbxmin.main">
+<para>
+Main entry point for a C++ program.
+</para>
+</callout>
+<callout arearefs="tbxmin.app">
+<para>
+Create a tbx application object giving it the location of the application resources. It is this object that starts up the Toolbox and implements the event processing.
+</para>
+</callout>
+<callout arearefs="tbxmin.run">
+<para>
+The application is run here. The Toolbox and Wimp events are all routed here. This routine doesn't finish until the quit event (defined in the resources above) or the quit WIMP message is received or the <function>quit()</function> method is called on the application object.
+</para>
+</callout>
+</calloutlist>
+</section>
+
+<section><title>Building the application</title>
+<para>To build set the working directory to the <filename>src</filename> and open a task window (by pressing Ctrl+F12). You need to make sure there is enough memory for the compiler so issue the command <command>WimpSlot</command> -min 8192K.
+</para>
+<para>The application can be built from the command line with;</para>
+<para>
+<command>gcc</command> -o^.!RunImage -ITBX: -LTBX: -ltbx main.cc
+</para>
+<para>To save typing download and use Make (available from www.riscos.info). And create the following makefile
+<programlisting>
+# Makefile for TBX Min
+
+CXXFLAGS = -O2 -Wall -mpoke-function-name -mthrowback -ITBX:
+
+LD = g++
+LDFLAGS = -LTBX: -ltbx -lstdc++ -static
+
+CCSRC = $(wildcard *.cc)
+OBJECTS = $(CCSRC:.cc=.o)
+
+^.!RunImage:	!RunImage,e1f
+	elf2aif !RunImage,e1f ^.!RunImage
+!RunImage,e1f:	$(OBJECTS)
+	$(LD) $(LDFLAGS) -o !RunImage,e1f $(OBJECTS)
+</programlisting>
+This makefile will compile all the C++ files in the current directory and link them to the tbx library. Additionally it passes the compiled application through the elf2aif process which means that the ELF program runner does not need to exist on the machine it runs on.
+</para>
+</section>
+
+</chapter>
+

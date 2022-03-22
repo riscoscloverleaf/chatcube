@@ -1,0 +1,8 @@
+This is a minimal example of a program using the TBX library.
+
+It just puts an icon on the iconbar.
+
+The iconbar menu gives two options.
+- show the application information
+- quit the application.
+

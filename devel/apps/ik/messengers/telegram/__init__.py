@@ -1,0 +1,1 @@
+default_app_config = 'ik.messengers.telegram.apps.IKMessengersTelegramConfig'

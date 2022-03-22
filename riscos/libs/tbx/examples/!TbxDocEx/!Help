@@ -1,0 +1,16 @@
+Simple example TBX application to show how to create a document based application.
+
+Running the application puts an icon on the iconbar.
+
+The iconbar menu gives two options.
+- show the application information
+- quit the application
+
+Clicking select on the iconbar shows a blank document window.
+
+Dragging a file to the icon bar or double clicking on a file to type 0x010 will open the window with the contents of the file.
+
+The window consists of a display field that shows a single line of text in a writable field.
+
+Editing this line updates the underlying document. The menu from this window allows you to see the documents file information and save it.
+

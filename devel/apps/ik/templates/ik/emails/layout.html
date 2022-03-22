@@ -1,0 +1,49 @@
+{% load i18n static iktags %}
+
+{% block subject %}[{{ settings.SITE_NAME }}] {% block subject_content %}{% endblock %}{% endblock %}
+
+{% block html %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html style="font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
+<title>{{ settings.SITE_NAME }} email</title>
+<style type="text/css">
+a, a:link, a:hover, a:visited {font-family: Trebuchet ms, Verdana, Arial, Helvetica, sans-serif; font-size: 14px;}
+td,body,p {font-family: Trebuchet ms, Verdana, Arial, Helvetica, sans-serif; font-size: 14px;}
+</style>
+{% block extrastyles %}{% endblock %}
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td align="center">
+<table border="0" cellpadding="10" cellspacing="0" {% block html_width %}width="600"{% endblock %}>
+    {% block logorow %}<tr><td valign="top" align="center">{% block html_top %}<img src="{% absolute_static "ik/chatcube-logo.jpg" %}" height="30%" alt="logo">{% endblock %}</td></tr>{% endblock %}
+    <tr><td valign="top" align="center">{% block html_content %}{% endblock %}</td></tr>
+    <tr><td valign="top" align="center">{% block html_footer %}
+        {% if member %}
+            {% trans "If you don't want to receive emails from ChatCube anymore, " %}<a href="{% absolute_url "ik:unsubscribe" id=member.get_member_hash %}" target="_blank">{% trans "click on this link." %}</a><br>
+        {% endif %}
+        <em>Copyright © {% now "Y" %} <a href="https://riscoscloverleaf.com" target="_blank">riscoscloverleaf.com</a>, All rights reserved.</em>
+    <br>
+    {% endblock %}
+    </td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>
+{% endblock %}
+
+{% block plain %}{% block plain_content %}
+Please view this email in program which understand HTML email.
+{% endblock %}
+
+{% block plain_footer %}
+{% if member %}{% trans "If you don't want to receive emails from ChatCube anymore, " %}{% trans "click on this link." %}
+{% absolute_url "ik:unsubscribe" id=member.get_member_hash %}{% endif %}
+
+Copyright © {% now "Y" %} riscoscloverleaf.com, All rights reserved.
+{% endblock %}
+{% endblock %}

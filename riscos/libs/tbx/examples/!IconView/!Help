@@ -1,0 +1,16 @@
+Example TBX application to show using a TileView to produce a "filer"
+like window.
+
+Running the application puts an icon on the iconbar.
+
+The iconbar menu gives two options.
+- show the application information
+- quit the application.
+
+Clicking select on the iconbar shows the "Icons" window.
+
+Drag files from a filer window to this window and the icon will
+be added to the window.
+
+The menu from the window allows you to select/unselect all the icons
+in the window or remove icons from the view.

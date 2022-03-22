@@ -1,0 +1,55 @@
+Set ChatCube$Dir <Obey$Dir>
+Set ChatCube$ChoicesDir <Choices$Write>.ChatCube
+
+Set App$Name "!ChatCube"
+
+Iconsprites <Obey$Dir>.!Sprite
+
+RMEnsure UtilityModule 3.10 Error This application is only suitable for use with RISC OS 3.10 or later versions
+
+RMEnsure UtilityModule 3.70 RMEnsure CallASWI 0.02 RMLoad System:Modules.CallASWI
+RMEnsure UtilityModule 3.70 RMEnsure CallASWI 0.02 Error You need CallASWI 0.02 or later to run <App$Name>
+RMEnsure FPEmulator 4.03 RMLoad System:Modules.FPEmulator
+RMEnsure FPEmulator 4.03 Error You need FPEmulator 4.03 or later to run <App$Name>
+RMEnsure SharedCLibrary 5.17 RMLoad System:Modules.CLib
+RMEnsure SharedCLibrary 5.34 Error You need SharedCLibrary 5.34 or later to run <App$Name>
+
+RMEnsure BorderUtils 0.02 RMEnsure WindowManager 3.17  RMLoad System:modules.BorderUtil
+
+RMENSURE Toolbox    0.00  RMLOAD System:modules.toolbox.toolbox
+RMENSURE Toolbox    1.23  ERROR You need toolbox 1.23 or later to run <App$Name>
+RMENSURE Window     0.00  RMLOAD System:modules.toolbox.window
+RMENSURE Window     1.15  ERROR You need window 1.15 or later to run <App$Name>
+RMENSURE Menu       0.00  RMLOAD System:modules.toolbox.menu
+RMENSURE Menu       0.15  ERROR You need menu 0.15 or later to run <App$Name>
+RMENSURE Iconbar    0.00  RMLOAD System:modules.toolbox.iconbar
+RMENSURE Iconbar    1.08  ERROR You need iconbar 1.08 or later to run <App$Name>
+RMENSURE ProgInfo   0.00  RMLOAD System:modules.toolbox.proginfo
+RMENSURE ProgInfo   0.05  ERROR You need proginfo 0.05 or later to run <App$Name>
+RMENSURE FileInfo   0.00  RMLOAD System:modules.toolbox.fileinfo
+RMENSURE FileInfo   0.05  ERROR You need fileinfo 0.05 or later to run <App$Name>
+RMENSURE SaveAs     0.00  RMLOAD System:modules.toolbox.saveas
+RMENSURE SaveAs     0.03  ERROR You need saveas 0.03 or later to run <App$Name>
+
+RMEnsure Tinct     0.14 RMLOAD System:Modules.Tinct
+RMEnsure Tinct     0.14 ERROR You need Tinct 0.14 or later to run <App$Name> Please use the RISC OS Configure app to update the computer's !System directory from the <App$Name> archive.
+
+If "<AMPlayer$Buffer$>" = ""           Then Set AMPlayer$Buffer$     20
+If "<AMPlayer$Buffer$SCSI>" = ""       Then Set AMPlayer$Buffer$SCSI 16
+If "<AMPlayer$Buffer$CDFS>" = ""       Then Set AMPlayer$Buffer$CDFS 40
+If "<AMPlayer$Buffer$FileBuffer>" = "" Then Set AMPlayer$FileBuffer  128
+
+RMEnsure AMPlayer 1.39 IfThere System:Modules.Audio.MP3.AMPlayer Then RMLoad System:Modules.Audio.MP3.AMPlayer
+RMEnsure AMPlayer 1.39 Error AMPlayer module 1.39 could not be loaded. Please install merge !System with ChatCube.!System directory
+
+SetMacro ChatCube$Path        <ChatCube$Dir>.
+FontInstall ChatCube:Fonts.
+
+CDir <ChatCube$ChoicesDir>
+CDir <ChatCube$ChoicesDir>.cache
+CDir <ChatCube$ChoicesDir>.downloads
+IfThere <ChatCube$ChoicesDir>.log-prev Then Delete <ChatCube$ChoicesDir>.log-prev
+IfThere <ChatCube$ChoicesDir>.log Then Rename <ChatCube$ChoicesDir>.log <ChatCube$ChoicesDir>.log-prev
+
+wimpslot -min 8192K -max 48000K
+<ChatCube$Dir>.!RunImage %*0 2><ChatCube$ChoicesDir>.error-log

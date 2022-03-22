@@ -1,0 +1,131 @@
+diff -urb /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/eventrouter.cc tbx/eventrouter.cc
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/eventrouter.cc	2021-03-23 15:28:14.000000000 +0300
++++ tbx/eventrouter.cc	2021-08-09 09:57:51.657038642 +0300
+@@ -151,16 +151,17 @@
+ 
+     	if (_catch_exceptions)
+     	{
++    	    int r0 = regs.r[0];
+ 			try
+ 			{
+ 				route_event(regs.r[0]);
+ 			} catch(std::exception &e)
+ 			{
+-				if (_uncaught_handler) _uncaught_handler->uncaught_exception(&e);
++				if (_uncaught_handler) _uncaught_handler->uncaught_exception(&e, r0);
+ 				else report_error(e.what(), "Uncaught Exception");
+ 			} catch(...)
+ 			{
+-				if (_uncaught_handler) _uncaught_handler->uncaught_exception(0);
++				if (_uncaught_handler) _uncaught_handler->uncaught_exception(0, r0);
+ 				else report_error("Uncaught exception");
+ 			}
+     	} else
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/textarea.cc	2021-03-23 15:28:14.000000000 +0300
++++ tbx/textarea.cc	2020-11-12 23:35:05.334851497 +0300
+@@ -216,7 +216,7 @@
+ 	regs.r[1] = _handle;
+ 	regs.r[3] = _id;
+ 	regs.r[4] = foreground;
+-	regs.r[4] = background;
++	regs.r[5] = background;
+ 	swix_check(_kernel_swi(0x44ec6, &regs, &regs));
+ }
+ 
+@@ -234,7 +234,7 @@
+ 	regs.r[1] = _handle;
+ 	regs.r[3] = _id;
+ 	regs.r[4] = foreground;
+-	regs.r[4] = background;
++	regs.r[5] = background;
+ 	swix_check(_kernel_swi(0x44ec6, &regs, &regs));
+ }
+ 
+@@ -256,5 +256,28 @@
+ 	background = regs.r[1];
+ }
+ 
++int TextArea::set_cursor_position(int index, int flags)
++{
++    _kernel_swi_regs regs;
++    regs.r[0] = flags;
++    regs.r[2] = 0x4023;
++    regs.r[1] = _handle;
++    regs.r[3] = _id;
++    regs.r[4] = index;
++    swix_check(_kernel_swi(0x44ec6, &regs, &regs));
++    return regs.r[4];
++}
++
++int TextArea::get_cursor_position()
++{
++    _kernel_swi_regs regs;
++    regs.r[0] = 0;
++    regs.r[2] = 0x4024;
++    regs.r[1] = _handle;
++    regs.r[3] = _id;
++    swix_check(_kernel_swi(0x44ec6, &regs, &regs));
++    return regs.r[4];
++}
++
+ 
+ }
+diff -urb /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/textarea.h tbx/textarea.h
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/textarea.h	2021-03-23 15:28:14.000000000 +0300
++++ tbx/textarea.h	2020-11-12 23:33:54.455077414 +0300
+@@ -255,6 +255,9 @@
+ 	void set_colour(Colour foreground, Colour background);
+ 	void get_colour(Colour &foreground, Colour &background) const;
+ 
++	int set_cursor_position(int index, int flags);
++    int get_cursor_position();
++
+ 	/**
+ 	 * Set the size of the border for the text area
+ 	 *
+diff -urb /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/uncaughthandler.h tbx/uncaughthandler.h
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/uncaughthandler.h	2021-03-23 15:28:14.000000000 +0300
++++ tbx/uncaughthandler.h	2021-04-07 12:43:33.425307638 +0300
+@@ -53,7 +53,7 @@
+ 	 * @param e pointer to std::exception caught or 0 if the exception
+ 	 *  wasn't a standard exception.
+ 	 */
+-	virtual void uncaught_exception(std::exception *e) = 0;
++	virtual void uncaught_exception(std::exception *e, int event_code) = 0;
+ };
+ 
+ }
+diff -urb /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/window.cc tbx/window.cc
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/window.cc	2021-03-23 15:28:14.000000000 +0300
++++ tbx/window.cc	2021-08-09 09:57:51.949036986 +0300
+@@ -59,15 +59,15 @@
+  * @param spec ShowSubWindowSpec specifying the location, parent
+  * and alignment flags for positioning this window in it's parent.
+  */
+-void Window::show_as_subwindow(const ShowSubWindowSpec &spec)
++void Window::show_as_subwindow(const ShowSubWindowSpec &spec, ObjectId parent, ComponentId cmp_id)
+ {
+ 	swix_check(_swix(0x44EC3, _INR(0,5),
+ 			4,  // Show as sub window flag
+ 			_handle,
+ 			1,  // Show using full spec
+ 			&(spec.visible_area),
+-			0,
+-			-1));
++			parent,
++            cmp_id));
+ }
+ 
+ 
+diff -urb /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/window.h tbx/window.h
+--- /home/lenz/projects/rochat/riscos/libs/tbx-0.7.6/tbx/window.h	2021-03-23 15:28:14.000000000 +0300
++++ tbx/window.h	2021-08-09 10:16:30.646575011 +0300
+@@ -151,7 +151,7 @@
+ 		 */
+ 		bool operator!=(const Object &other) const {return (_handle != other.handle());}
+ 
+-		void show_as_subwindow(const ShowSubWindowSpec &spec);
++		void show_as_subwindow(const ShowSubWindowSpec &spec, ObjectId parent = 0, ComponentId cmp_id = -1);
+ 
+ 		Gadget gadget(ComponentId component_id);
+ 

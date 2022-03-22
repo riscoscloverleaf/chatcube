@@ -1,0 +1,2 @@
+class IKException(Exception):
+    pass

@@ -1,0 +1,83 @@
+<chapter>
+<title>Utility classes and functions</title>
+<para>
+ The TBX library provides a number of utility classes and functions to
+ help writing RISC OS applications. None of these are required to be
+ used in a TBX application, other libraries or direct SWI (software
+ interupt calls) could be used instead.
+</para>
+<section><title>The Path class</title>
+<para>
+ The <classname>Path</classname> class provides methods and properties
+ to work with file/directory names and to interrogate and create them
+ on the storage they are saved in.
+</para>
+<para>
+ One function that is most likely to be used in any application that
+ manipulates a RISC OS file is the <function>Path::file_type</function>
+ method that sets the file type of a RISC OS file.
+</para>
+<para>
+ The <function>load_file</function> and <function>save_file</function>
+ methods are a simple way of loading and saving a block of memory as
+ a file.
+</para>
+<para>
+ A directory can be easily iterated using the <classname>Path::Iterator</classname>
+ that is returned from the <function>begin</function> and <function>end</function>
+ methods.
+</para>
+<para>
+ The related <classname>PathInfo</classname> class can be returned from a
+ <classname>Path</classname> with more details of the file/directory on
+ the disc. This class can also be used to iterate a directory where the
+ this extra information is required for each object iterated.
+</para>
+<para>
+ If you want a set of named properties that can be saved and loaded to a
+ file it is worth considering the TBX <classname>PropertySet</classname>.
+</para>
+<para>
+ If you want to store textual data in a more hierarchical structure the
+ <classname>TagDoc</classname> is worth considering.
+</para>
+<para>
+ It is also worth investigating the classes in the <package>tbx::doc</package>
+ if you are writing a document based application.
+</para>
+</section>
+
+<section><title>Reporting errors, messages and questions.</title>
+<para>
+ Usually you should create an Window that is shown to report any errors
+ that occur in your application. However sometimes during testing or for
+ very rare errors you may want to use the RISC OS standard error box to
+ report errors. Use the <function>report_error</function> functions to
+ show these errors. This error box stops user interaction with other
+ Windows until it is dismissed, which is why it is not recommended for
+ standard error reporting.
+</para>
+  <para>
+    For simple messages the <function>show_message</function> can be used
+    to show a window which is sized to fit the text it is given. This
+    window does not stop user interaction with any other Windows,
+  </para>
+  <para>
+    If you wish to ask a simple yes/no type question you can use
+    <function>show_question</function>. This runs the commands it
+    is given when the user selects yes or no. It does not
+    stop interaction with any other windows. <function>show_question_as_menu</function>
+    can be used if you want the question window to be cancelled if
+    the user attempts to click anywhere else.
+  </para>
+</section>
+
+<section><title>String utilities</title>
+<para>
+ The <filename>stringutils.h</filename> provides some useful functions for
+ converting and comparing strings. It provides routines for case insensitive
+ comparison and converting other type to and from strings.
+</para>
+</section>
+
+</chapter>

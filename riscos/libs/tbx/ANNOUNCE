@@ -1,0 +1,35 @@
+TBX C++ library version 0.7.4 (alpha) has now been released. 
+
+The main features of this release are: 
+- Added TaskWindow class to run a child task using the RISC OS
+  TaskWindow command
+- Added Menu/MenuItem submenu and selection listeners
+- Added GadgetListView class to handle a list made up of one or
+  more gadgets on a line
+- Added new class LockExtentPosition to keep gadget edges locked
+  to the side of the windows extent
+
+As always it also includes a range of bug fixes, 
+documentation improvements and further coverage of 
+RISC OS in the existing classes 
+
+
+TBX is a C++ library to help with the development of 
+C++ applications for the RISC OS desktop. 
+
+It comes with a userguide and reference documentation. 
+
+TBX is released under the permissive X11 licence so can be used 
+with commercial and non-commercial applications without charge. 
+
+Addition downloads provide some examples and a 
+program to help generate simple C++ skeleton projects. 
+
+All these packages can be easily downloaded using the 
+RISC OS Packaging Project managers !RiscPkg or !PackMan. 
+
+For more information and instruction on how to download 
+them manually see: 
+
+https://sites.google.com/site/alansriscosstuff/tbx 
+

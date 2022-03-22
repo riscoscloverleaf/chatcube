@@ -1,0 +1,20 @@
+| Run file for minimum Tbx application
+
+IconSprites <Obey$Dir>.!Sprites
+
+RMEnsure Toolbox 1.36 RMLoad System:Modules.Toolbox.Toolbox
+RMEnsure Toolbox 1.36 Error ListTest needs version 1.36 or later of the Toolbox module
+RMEnsure Window 1.31 RMLoad System:Modules.Toolbox.Window
+RMEnsure Window 1.31 Error ListTest needs version 1.31 or later of the Window module
+RMEnsure Menu 0.24 RMLoad System:Modules.Toolbox.Menu
+RMEnsure Menu 0.24 Error ListTest needs version 0.24 or later of the Menu module
+RMEnsure Iconbar 1.12 RMLoad System:Modules.Toolbox.Iconba
+RMEnsure Iconbar 1.12 Error ListTest needs version 1.12 or later of the Iconbar module
+RMEnsure ProgInfo 0.09 RmLoad System:Modules.Toolbox.ProgInfo
+RMEnsure ProgInfo 0.09 Error ListTest needs version 0.09 or later of the ProgInfo module
+
+Set TbxMin$Dir <Obey$Dir>
+
+WimpSlot -min 768k -max 768k
+
+/<TbxMin$Dir>.!RunImage %*0

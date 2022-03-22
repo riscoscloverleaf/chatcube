@@ -1,0 +1,18 @@
+| Run file for IconView example
+
+RMEnsure UtilityModule 3.10 Error IconView needs RISC OS 3.10 or a later version
+If "<IconView$Dir>"<>"<Obey$Dir>" Then /<Obey$Dir>.!Boot
+If "<System$Path>"="" Then Error System resources cannot be found; open a window containing the System application and try again
+WimpSlot -min 140k -max 140k
+RMEnsure Toolbox 1.36 /System:Modules.Toolbox.Toolbox
+RMEnsure Toolbox 1.36 Error IconView needs version 1.36 or later of the Toolbox module
+RMEnsure Window 1.31 /System:Modules.Toolbox.Window
+RMEnsure Window 1.31 Error IconView needs version 1.31 or later of the Window module
+RMEnsure Menu 0.24 /System:Modules.Toolbox.Menu
+RMEnsure Menu 0.24 Error IconView needs version 0.24 or later of the Menu module
+RMEnsure Iconbar 1.12 /System:Modules.Toolbox.Iconbar
+RMEnsure Iconbar 1.12 Error IconView needs version 1.12 or later of the Iconbar module
+RMEnsure ProgInfo 0.09 /System:Modules.Toolbox.ProgInfo
+RMEnsure ProgInfo 0.09 Error IconView needs version 0.09 or later of the ProgInfo module
+WimpSlot -min 2048k -max 2048k
+/<IconView$Dir>.!RunImage %*0

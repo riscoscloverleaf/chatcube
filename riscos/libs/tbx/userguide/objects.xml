@@ -1,0 +1,150 @@
+<chapter>
+<title>The core TBX classes</title>
+<section><title>The Application class</title>
+<para>
+The tbx has one main class that is used to setup and run a Toolbox application called <classname>Application</classname>. This class is used to setup the application and
+initialise the Toolbox, and run the main polling loop that is the heart of any
+desktop application.
+</para>
+<para>A tbx application has a <function>main</function> subroutine that
+creates an application object and then runs it.</para>
+<example><title>Common contents of the <function>main</function> for a tbx routine</title>
+<programlisting>
+int main()
+{
+    tbx::Application my_app("&lt;MyApp$Dir&gt;");
+
+    // Set up handlers required for the main application
+    
+    my_app.run();
+}
+</programlisting>
+</example>
+</section>
+
+<section><title>Toolbox objects</title>
+<para>
+The tbx library provides a light wrapper around the Toolbox objects,
+gadgets and menu items.
+</para>
+<para>
+ The classes to manipulate the toolbox objects can be treated as
+ references to the underlying toolbox object.
+</para>
+<para>
+ Copying the C++ classes does not make a copy of the object, rather it
+ copies the reference so both classes refer to the same object.
+</para>
+<example><title>Multiple C++ instances refer to one Toolbox object</title>
+<programlisting>
+tbx::Window w1("Window"); // Creates a C++ class instance and the underlying toolbox object
+tbx::Window w2 = w1;      // Creates a new C++ class instance, but refers to the same toolbox object
+
+w1.title("New Title");        // Changes "Window" toolbox items title to "New Title"
+w2.title("Even newer title"); // "Window" toolbox item title has been changed again
+</programlisting>
+</example>
+<para>
+ Any toolbox object can be represented by the <classname>Object</classname> class.
+ To manipulate it using the properties and methods for that specific class you need
+ to first copy it into a class derived from it. At the point of the copy the toolbox
+ object class type is checked to ensure the C++ class it is copied to is correct and
+ an exception is thrown if it is not.
+</para>
+<para>
+ In some cases you will be returned a C++ class instance that is not
+ currently assosiated with a toolbox object. To determine if a C++
+ class instance does not reference a toolbox object call the <function>null()</function>
+ method on the object class.
+</para>
+
+<para>
+ To associate a toolbox class with a C++ class you can either create
+ the toolbox class from the C++ class by using the constructor that
+ takes a template name, use the set_autocreate_listener on the
+ Application class which will be triggered when an object is auto-created
+ by the toolbox, or get it from a property or method of another toolbox
+ object that returns an object.
+</para>
+<example><title>Creating a toolbox object in code</title>
+<programlisting>
+// Create the toolbox object named "Window" defined in the "Res" file.
+tbx::Window main_window("Window");
+</programlisting>
+</example>
+
+<example><title>Getting a reference to a toolbox object when it is autocreated</title>
+<programlisting>
+// Class to get reference to toolbox object
+class GetMainWindow : tbx::AutoCreateListener
+{
+public:
+  // Subroutine called when object is auto created
+  virtual void auto_created( std::string template_name,  tbx::Object object)
+  {
+     tbx::Window main_window(object); // main_window now refers to the object created
+     // Do stuff with main_window
+     ...
+  }        
+};
+
+// Code fragment from main setting up the listener for toolbox object "Window"
+GetMainWindow get_main_window;
+test_app.set_autocreate_listener("Window", &amp;get_main_window);
+</programlisting>
+</example>
+
+<example><title>Getting a reference toolbox object from another toolbox object</title>
+<programlisting>
+// main_window is a tbx::Window instance
+tbx::Menu main_menu = main_window.menu();
+</programlisting>
+</example>
+
+<para>
+ To detect when a toolbox object is deleted automatically you can add a listener for the
+ has been deleted event. If the toolbox does not delete the object automatically you can
+ delete the toolbox object from the C++ class instance by calling the delete_object method.
+</para>
+<para>
+ A MatchLifetime templated class provides a convenient way to match
+ the life time of a C++ class instance with a toolbox object. If its constructor
+ is provided with a template name it will automatically add the above
+ listeners for you.
+</para>
+</section>
+
+<section>
+<title>Menu items</title>
+<para>
+MenuItems are retrieved with the <classname>Menu</classname> class <function>item</function> method passing the
+menu item component id.
+</para>
+</section>
+
+<section>
+<title>Gadgets</title>
+<para>
+Gadgets are retrieved using the <classname>Window</classname> class <function>gadget</function> method.
+</para>
+<para>
+ This returns a generic <classname>Gadget</classname> C++ class instance. If anything but the most
+ generic of methods or properties are used it then needs to be cast to the subclass of Gadget for
+ the type of gadget retrieved.
+</para>
+<example><title>Getting a WritableField from a window</title>
+<programlisting>
+ // main_window is a tbx::Window
+ tbx::WritableField name_field = main_window.gadget(1);
+ name_field.text("Hi there"); // Update the fields text
+</programlisting>
+</example>
+<para>
+ Like the <classname>Object</classname> class, the <classname>Gadget</classname> can sometimes be
+ in a state where it does not refer to a gadget. To check for this call the <function>null()</function>
+ method.
+</para>
+
+</section>
+
+</chapter>

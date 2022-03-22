@@ -1,0 +1,47 @@
+<chapter>
+<title>Using toolbox resources from memory</title>
+<para>
+  In some cases using a toolbox resource directly as it is
+  in the <filename>Res</filename> file does not give enough flexibility.
+  This most often occcurs if you need to add some new gadgets to
+  a window or new menu items to a menu.
+</para>
+  <para>
+    TBX provides a <package>res</package> namespace that allows you
+    to load and manipulate toolbox resources in memory. Each toolbox
+    object/gadget and menu item has a class prefixed with "Res" that
+    allows you to create and manipulate a toolbox resource template for
+    it. e.g. The <classname>tbx::Menu</classname> class has a corresponding
+    <classname>tbx::res::ResMenu</classname> class.
+    Objects can then be created with the constructor that takes this
+    res object, gadgets can be added to windows using the <methodname>add_gadget</methodname> method and
+    menu items can be added to menus with <methodname>add</methodname> method.
+  </para>
+  <para>
+    Two classes exist to use a resource file <classname>tbx::res::ResFile</classname>
+    which provides read-only access to a resource file and <classname>tbx::res::ResEditor</classname>
+    which allows a resource file to created, loaded and saved.
+  </para>
+  <para>
+    However in most cases you are likely to want to create a resource based
+    on one already existing in your normal <filename>Res</filename> file. Any resource
+    template can be retrieved from the <classname>tbx::Application</classname>
+    class using the <methodname>resource</methodname> method.
+  </para>
+  <example>
+    <title>Adding some extra menu items to a menu</title>
+    <programlisting>
+   tbx::res::ResMenu res_menu = tbx::app()->resource("RecentMenu");
+   tbx::res::ResMenuItem new_item = res_menu.item(0);
+
+   while (i &lt; num)
+   {
+      new_item.text(get_file_leaf_name(i).c_str());
+      new_item.component_id(i);
+      _menu.add(new_item);
+      i++;
+   }
+    </programlisting>
+  </example>
+
+</chapter>

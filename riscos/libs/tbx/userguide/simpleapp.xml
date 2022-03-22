@@ -1,0 +1,136 @@
+<chapter>
+<title>Creating a Simple application with one Window</title>
+<para>
+ This chapter goes through how to create a simple application that
+ shows a single Window where you can enter text and press a button
+ to reverse it. It also shows a count of the number of characters
+ in the text field as you type them.
+</para>
+<para>
+ The full demo application is called !Reverse and include in the
+ separate TBX-Examples download.
+</para>
+<section><title>Creating the application</title>
+<para>
+ The initial application is created in the same way as the TbxMin application
+ from earlier in the book. In this case we are calling the application Reverse.
+</para>
+<para>
+ For this application we also want to add a window to show our user interface
+ that will allow text to be inputted and then reversed.
+</para>
+<para>
+ Use ResEd to create a new window called "reverse",
+ add a writable field (id 1) for the input,
+ a display field (id 3) to display the count
+ and a push button with a caption of "Reverse" with the local button flag set to true
+ and deliver event set to other with an event number of 1.
+</para>
+<para>
+ Edit the iconbaricon object and put this window in the object to show on
+ a click.
+</para>
+</section>
+
+<section><title>Hooking code up to when the Window is shown by the toolbox</title>
+<para>
+ The window will be automatically shown by the toolbox when the user clicks
+ on the iconbar. We have to detect this so we can add our event handling and
+ set variables for the gadgets on the window. In this example we have a class
+ called <classname>Reverser</classname> that does this. The following code
+ snippet is from the main function that does this.
+</para>
+<programlisting>
+ // A class to control the main window
+ Reverser reverser;
+
+ // Link the class to the "reverse" toolbox window when it is created
+ my_app.set_autocreate_listener("reverse", &amp;reverser);
+</programlisting>
+<para>
+ Now when the "reverse" toolbox object is created the <methodname>auto_created</methodname>
+ method will be called on the reverser C++ object.
+</para>
+</section>
+<section><title>Hooking code up to the gadgets</title>
+<para>
+ We add two new classes to do the actual processing. <classname>Counter</classname>
+ which will look for the <methodname>text_changed</methodname> event and updates a
+ display field. <classname>ReverseCommand</classname> which is a <classname>tbx::Command</classname>
+ that will be executed by the button to reverse the text.
+</para>
+<para>
+ These classes are members of the Reverser class and are hooked up with the following code
+</para>
+<programlisting>
+void Reverser::auto_created(std::string template_name, Object object)
+{
+    // object references the toolbox object that was created
+    // so we construct a tbx::Window object from it so we can
+    // use the Window gadget method.
+    Window window(object);
+
+    // Set variable for the gadgets on the window we wish to access
+    WritableField input(window.gadget(1));
+    DisplayField count(window.gadget(3));
+
+    // Let the counter class know where to put the count
+    _counter.display_to(count);
+
+    // Add the counter as a text listener to the input field
+    input.add_text_changed_listener(&amp;_counter);
+
+    // Let the reverser command know what field it is dealing with
+    _reverser.reverse_field(input);
+
+    // Finally add the reverser command to the window. Any gadget
+    // (including our push button) on the window that generates
+    // the event number 1 will cause the object to run.
+    window.add_command(1, &amp;_reverser);
+}
+</programlisting>
+</section>
+
+<section><title>Implementing the event/command handling</title>
+<para>
+ The <classname>Counter</classname> is derived from a
+ <classname>tbx::TextChangedListener</classname> and uses the
+ following code which is called when the text changes in the
+ <classname>WritableField</classname>.
+</para>
+<programlisting>
+void Counter::text_changed(TextChangedEvent &amp;event)
+{
+    // _count is the DisplayField set in the auto_created
+    // code above.
+    
+    // The event returns the new value of the text
+    // Use the tbx::to_string utility as the display
+    // field expects text, not an integer.
+    _count.text(to_string(event.text().length()));
+}
+</programlisting>
+<para>
+ Finally we just need to define the <methodname>execute</methodname>
+ for our <classname>ReverseCommand</classname> as follows.
+</para>
+<programlisting>
+void ReverseCommand::execute()
+{
+    // _reverse is the WritableField set in the auto_created
+    // code above.
+
+    // Get the current value of the WritableField
+    std::string value = _reverse.text();
+
+    // Simple STL code to reverse a piece of text
+    std::string reverse;
+    reverse.append(value.rbegin(), value.rend());
+
+    // Set the value of the WritableField with the reversed text
+    _reverse.text(reverse);
+}
+</programlisting>
+</section>
+
+</chapter>

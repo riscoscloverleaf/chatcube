@@ -1,0 +1,20 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Reporting errors, messages and questions.</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch06.html" title="Chapter 6. Utility classes and functions"><link rel="prev" href="ch06.html" title="Chapter 6. Utility classes and functions"><link rel="next" href="ch06s03.html" title="String utilities"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Reporting errors, messages and questions.</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Utility classes and functions</th><td width="20%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr></table><hr></div><div class="section" title="Reporting errors, messages and questions."><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36099326"></a>Reporting errors, messages and questions.</h2></div></div></div><p>
+ Usually you should create an Window that is shown to report any errors
+ that occur in your application. However sometimes during testing or for
+ very rare errors you may want to use the RISC OS standard error box to
+ report errors. Use the <code class="function">report_error</code> functions to
+ show these errors. This error box stops user interaction with other
+ Windows until it is dismissed, which is why it is not recommended for
+ standard error reporting.
+</p><p>
+    For simple messages the <code class="function">show_message</code> can be used
+    to show a window which is sized to fit the text it is given. This
+    window does not stop user interaction with any other Windows,
+  </p><p>
+    If you wish to ask a simple yes/no type question you can use
+    <code class="function">show_question</code>. This runs the commands it
+    is given when the user selects yes or no. It does not
+    stop interaction with any other windows. <code class="function">show_question_as_menu</code>
+    can be used if you want the question window to be cancelled if
+    the user attempts to click anywhere else.
+  </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 6. Utility classes and functions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> String utilities</td></tr></table></div></body></html>

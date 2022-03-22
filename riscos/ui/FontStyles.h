@@ -1,0 +1,23 @@
+//
+// Created by lenz on 3/17/20.
+//
+
+#ifndef ROCHAT_FONTSTYLES_H
+#define ROCHAT_FONTSTYLES_H
+
+#include "cloverleaf/CLGraphics.h"
+
+extern CLFontStyle TEXT_FONT_STYLE;
+extern CLFontStyle CHAT_NAME_FONT_STYLE;
+extern CLFontStyle CHAT_MESSAGE_FONT_STYLE;
+extern CLFontStyle CHAT_ACTION_FONT_STYLE;
+extern CLFontStyle MESSAGE_FONT_STYLE;
+extern CLFontStyle MESSAGE_BOLD_FONT_STYLE;
+extern CLFontStyle MESSAGE_ITALIC_FONT_STYLE;
+extern CLFontStyle MESSAGE_AUTHOR_FONT_STYLE;
+extern CLFontStyle MESSAGE_FORWAREDED_AUTHOR_FONT_STYLE;
+extern CLFontStyle MESSAGE_REPLIED_AUTHOR_FONT_STYLE;
+extern CLFontStyle DATE_FONT_STYLE;
+extern CLFontStyle UNREADED_FONT_STYLE;
+
+#endif //ROCHAT_FONTSTYLES_H

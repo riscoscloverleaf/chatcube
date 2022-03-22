@@ -1,0 +1,36 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Creating the application files</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch03.html" title="Chapter 3. Creating a minimal desktop application"><link rel="prev" href="ch03.html" title="Chapter 3. Creating a minimal desktop application"><link rel="next" href="ch03s03.html" title="Creating the application code"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating the application files</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Creating a minimal desktop application</th><td width="20%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr></div><div class="section" title="Creating the application files"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36098534"></a>Creating the application files</h2></div></div></div><p>The first thing to create is the application directory <code class="filename">!TbxMin</code>. Once created all other files are created under this.</p><p>All Toolbox applications need a messages file with two special tags in. Create a file called <code class="filename">Messages</code> with the following contents.
+</p><pre class="programlisting">
+_TaskName:Minimun TBX application
+_TaskSprite:!tbxmin
+</pre><p>Next we want to give the application an icon in the filer view and one to use on the iconbar when the application is run. To do this we create a sprite file <code class="filename">!Sprites</code> that contains a single mode 12 sprite sized 34x17 named !tbxmin. This sprite can be created with !Paint.</p><p>All the GUI objects used in the application are defined in the resource file. Using !ResEdit create a new resource file <code class="filename">Res</code> as follows:
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">Add an iconbar icon.</li><li class="listitem">Set its auto create and show object flags.</li><li class="listitem">Edit the iconbar icon definition so that it's sprite is set to "!tbxmin" and it has a menu named "IBMenu".</li><li class="listitem">Add a menu and rename it to "IBMenu".</li><li class="listitem">Add a menu item with the text "Info" that shows the object "ProgInfo" as a submenu.</li><li class="listitem">Add a menu item with the text "Quit" that raises the event &amp;82a91. When the tbx application receives this event number it knows it must quit.</li><li class="listitem">Finally add a proginfo dialogue.</li></ol></div><p>
+</p><p>We also need to create an obey file <code class="filename">!Run</code> to ensure the Toolbox modules are loaded and launch the application. Create the <code class="filename">!Run</code> with the following contents.</p><pre class="programlisting">
+| Run file for TbxMin application                                        <a name="run.comment"></a><img src="images/callouts/1.png" alt="1" border="0">
+
+RMEnsure Toolbox 1.36 RMLoad System:Modules.Toolbox.Toolbox              <a name="run.toolbox"></a><img src="images/callouts/2.png" alt="2" border="0">
+RMEnsure Toolbox 1.36 Error This application needs Toolbox 1.36 or later.
+RMEnsure IconBar 0.00 RMLoad System:Modules.Toolbox.IconBar              <a name="run.modules"></a><img src="images/callouts/3.png" alt="3" border="0">
+RMEnsure IconBar 1.12 Error This application needs IconBar 1.12 or later.
+RMEnsure Menu 0.00 RMLoad System:Modules.Toolbox.Menu
+RMEnsure Menu 0.24 Error This application needs Menu 0.24 or later.
+RMEnsure ProgInfo 0.00 RMLoad System:Modules.Toolbox.ProgInfo
+RMEnsure ProgInfo 0.09 Error This application needs ProgInfo 0.09 or later.
+
+Wimpslot -min 2048K -max 2048K                                           <a name="run.wimpslot"></a><img src="images/callouts/4.png" alt="4" border="0">
+
+Set TbxMin$Dir &lt;Obey$Dir&gt;                                                <a name="run.directory"></a><img src="images/callouts/5.png" alt="5" border="0">
+
+Run &lt;TbxMin$Dir&gt;.!RunImage %*0                                           <a name="run.run"></a><img src="images/callouts/6.png" alt="6" border="0">
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#run.comment"><img src="images/callouts/1.png" alt="1" border="0"></a> </p></td><td valign="top" align="left"><p>
+This is a comment line that is ignored when the file is run.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#run.toolbox"><img src="images/callouts/2.png" alt="2" border="0"></a> </p></td><td valign="top" align="left"><p>
+All Toolbox applications must ensure the toolbox modules is loaded. The first line loads it if it is not already loaded and the second line checks the version is high enough for this application and reports an error and stops if it is not.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a name="runmodules"></a><a href="#run.modules"><img src="images/callouts/3.png" alt="3" border="0"></a> </p></td><td valign="top" align="left"><p>
+The other toolbox modules needed by the application are loaded here.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#run.wimpslot"><img src="images/callouts/4.png" alt="4" border="0"></a> </p></td><td valign="top" align="left"><p>
+Set the initial size the application requires. C++ programs compiled with GCC will grow the wimpslot as they run if necessary, but you still need enough space allocated to start the program up. The value chosen here "2048" is just a guess it will need to be adjusted (probably to a smaller value) once we have the application finished.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#run.directory"><img src="images/callouts/5.png" alt="5" border="0"></a> </p></td><td valign="top" align="left"><p>
+This command sets a system variable with the location of this application. It is used so the application knows where to load it resources.
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#run.run"><img src="images/callouts/6.png" alt="6" border="0"></a> </p></td><td valign="top" align="left"><p>
+This is the line the launches the application.
+</p></td></tr></table></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Creating a minimal desktop application </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Creating the application code</td></tr></table></div></body></html>

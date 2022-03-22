@@ -1,0 +1,34 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Hooking code up to the gadgets</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch07.html" title="Chapter 7. Creating a Simple application with one Window"><link rel="prev" href="ch07s02.html" title="Hooking code up to when the Window is shown by the toolbox"><link rel="next" href="ch07s04.html" title="Implementing the event/command handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Hooking code up to the gadgets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Creating a Simple application with one Window</th><td width="20%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr></table><hr></div><div class="section" title="Hooking code up to the gadgets"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36099445"></a>Hooking code up to the gadgets</h2></div></div></div><p>
+ We add two new classes to do the actual processing. <code class="classname">Counter</code>
+ which will look for the <code class="methodname">text_changed</code> event and updates a
+ display field. <code class="classname">ReverseCommand</code> which is a <code class="classname">tbx::Command</code>
+ that will be executed by the button to reverse the text.
+</p><p>
+ These classes are members of the Reverser class and are hooked up with the following code
+</p><pre class="programlisting">
+void Reverser::auto_created(std::string template_name, Object object)
+{
+    // object references the toolbox object that was created
+    // so we construct a tbx::Window object from it so we can
+    // use the Window gadget method.
+    Window window(object);
+
+    // Set variable for the gadgets on the window we wish to access
+    WritableField input(window.gadget(1));
+    DisplayField count(window.gadget(3));
+
+    // Let the counter class know where to put the count
+    _counter.display_to(count);
+
+    // Add the counter as a text listener to the input field
+    input.add_text_changed_listener(&amp;_counter);
+
+    // Let the reverser command know what field it is dealing with
+    _reverser.reverse_field(input);
+
+    // Finally add the reverser command to the window. Any gadget
+    // (including our push button) on the window that generates
+    // the event number 1 will cause the object to run.
+    window.add_command(1, &amp;_reverser);
+}
+</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Hooking code up to when the Window is shown by the toolbox </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Implementing the event/command handling</td></tr></table></div></body></html>

@@ -1,0 +1,17 @@
+|Run file for Reverse
+
+IconSprites <Obey$Dir>.!Sprites
+
+RMENSURE Window  0.00  RMLOAD System:modules.toolbox.window
+RMENSURE Window  1.17  ERROR You need window 1.17 or later to run !Reverse
+RMENSURE Menu  0.00  RMLOAD System:modules.toolbox.menu
+RMENSURE Menu  0.13  ERROR You need menu 0.13 or later to run !Reverse
+RMENSURE ProgInfo  0.00  RMLOAD System:modules.toolbox.proginfo
+RMENSURE Proginfo  0.00  ERROR You need proginfo to run !Reverse
+RMENSURE IconBar  0.00  RMLOAD System:modules.toolbox.IconBar
+RMENSURE IconBar  0.00  ERROR You need IconBar to run !Reverse
+
+Set Reverse$Dir <Obey$Dir>
+WimpSlot -min 800K -max 800K
+
+Run <Obey$Dir>.!RunImage

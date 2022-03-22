@@ -1,0 +1,1404 @@
+{% extends "ik/emails/layout.html" %}
+{% block subject_content %}14 days left to join the RISC OS project{% endblock %}
+
+{% block extrastyles %}
+<style type="text/css">
+p {
+    margin: 10px 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+img, a img {
+    border: 0;
+    height: auto;
+    outline: none;
+    text-decoration: none;
+}
+
+body, #bodyTable, #bodyCell {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.mcnPreviewText {
+    display: none !important;
+}
+
+#outlook a {
+    padding: 0;
+}
+
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+table {
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+}
+
+.ReadMsgBody {
+    width: 100%;
+}
+
+.ExternalClass {
+    width: 100%;
+}
+
+p, a, li, td, blockquote {
+    mso-line-height-rule: exactly;
+}
+
+a[href^=tel], a[href^=sms] {
+    color: inherit;
+    cursor: default;
+    text-decoration: none;
+}
+
+p, a, li, td, body, table, blockquote {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div, .ExternalClass span, .ExternalClass font {
+    line-height: 100%;
+}
+
+a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+.templateContainer {
+    max-width: 604px !important;
+}
+
+a.mcnButton {
+    display: block;
+}
+
+.mcnImage, .mcnRetinaImage {
+    vertical-align: bottom;
+}
+
+.mcnTextContent {
+    word-break: break-word;
+}
+
+.mcnTextContent img {
+    height: auto !important;
+}
+
+.mcnDividerBlock {
+    table-layout: fixed !important;
+}
+
+body, #bodyTable {
+    background-color: #FAFAFA;
+}
+
+#bodyCell {
+    border-top: 0;
+}
+
+h1 {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 125%;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+h2 {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 125%;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+h3 {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 125%;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+h4 {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 125%;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+#templatePreheader {
+    background-color: #FAFAFA;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0;
+    border-bottom: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+#templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
+    color: #656565;
+    font-family: Helvetica;
+    font-size: 12px;
+    line-height: 150%;
+    text-align: left;
+}
+
+#templatePreheader .mcnTextContent a, #templatePreheader .mcnTextContent p a {
+    color: #656565;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#templateHeader {
+    background-color: #FFFFFF;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0;
+    border-bottom: 0;
+    padding-top: 9px;
+    padding-bottom: 0;
+}
+
+#templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+}
+
+#templateHeader .mcnTextContent a, #templateHeader .mcnTextContent p a {
+    color: #007C89;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#templateBody {
+    background-color: #FFFFFF;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0;
+    border-bottom: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+#templateBody .mcnTextContent, #templateBody .mcnTextContent p {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+}
+
+#templateBody .mcnTextContent a, #templateBody .mcnTextContent p a {
+    color: #007C89;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#templateColumns {
+    background-color: #FFFFFF;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0;
+    border-bottom: 2px solid #EAEAEA;
+    padding-top: 0;
+    padding-bottom: 9px;
+}
+
+#templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
+    color: #202020;
+    font-family: Helvetica;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+}
+
+#templateColumns .columnContainer .mcnTextContent a, #templateColumns .columnContainer .mcnTextContent p a {
+    color: #007C89;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#templateFooter {
+    background-color: #FAFAFA;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 0;
+    border-bottom: 0;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+#templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
+    color: #656565;
+    font-family: Helvetica;
+    font-size: 12px;
+    line-height: 150%;
+    text-align: center;
+}
+
+#templateFooter .mcnTextContent a, #templateFooter .mcnTextContent p a {
+    color: #656565;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px) {
+    .templateContainer {
+        width: 604px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    body, table, td, p, a, li, blockquote {
+        -webkit-text-size-adjust: none !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    body {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .columnWrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnRetinaImage {
+        max-width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImage {
+        width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnCartContainer, .mcnCaptionTopContent, .mcnRecContentContainer, .mcnCaptionBottomContent, .mcnTextContentContainer, .mcnBoxedTextContentContainer, .mcnImageGroupContentContainer, .mcnCaptionLeftTextContentContainer, .mcnCaptionRightTextContentContainer, .mcnCaptionLeftImageContentContainer, .mcnCaptionRightImageContentContainer, .mcnImageCardLeftTextContentContainer, .mcnImageCardRightTextContentContainer, .mcnImageCardLeftImageContentContainer, .mcnImageCardRightImageContentContainer {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnBoxedTextContentContainer {
+        min-width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageGroupContent {
+        padding: 9px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnCaptionLeftContentOuter .mcnTextContent, .mcnCaptionRightContentOuter .mcnTextContent {
+        padding-top: 9px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageCardTopImageContent, .mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent, .mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent {
+        padding-top: 18px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageCardBottomImageContent {
+        padding-bottom: 9px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageGroupBlockInner {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageGroupBlockOuter {
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnTextContent, .mcnBoxedTextContentColumn {
+        padding-right: 18px !important;
+        padding-left: 18px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnImageCardLeftImageContent, .mcnImageCardRightImageContent {
+        padding-right: 18px !important;
+        padding-bottom: 0 !important;
+        padding-left: 18px !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcpreview-image-uploader {
+        display: none !important;
+        width: 100% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 22px !important;
+        line-height: 125% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    h2 {
+        font-size: 20px !important;
+        line-height: 125% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    h3 {
+        font-size: 18px !important;
+        line-height: 125% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    h4 {
+        font-size: 16px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .mcnBoxedTextContentContainer .mcnTextContent, .mcnBoxedTextContentContainer .mcnTextContent p {
+        font-size: 14px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templatePreheader {
+        display: block !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
+        font-size: 14px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
+        font-size: 16px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templateBody .mcnTextContent, #templateBody .mcnTextContent p {
+        font-size: 16px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
+        font-size: 16px !important;
+        line-height: 150% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    #templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
+        font-size: 14px !important;
+        line-height: 150% !important;
+    }
+
+}</style>
+{% endblock %}
+
+{% block logorow %}{% endblock %}
+{% block html_width %}{% endblock %}
+
+{% block html_content %}
+{% spaceless %}
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
+   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
+<tr>
+    <td align="center" valign="top" id="bodyCell"
+        style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;border-top: 0;">
+        <!-- BEGIN TEMPLATE // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"
+               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+            <tr>
+                <td align="center" valign="top" id="templateHeader"
+                    style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 0;">
+                    <!--[if (gte mso 9)|(IE)]>
+                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="604" style="width:604px;">
+                            <tr>
+                            <td align="center" valign="top" width="604" style="width:604px;">
+                            <![endif]-->
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+                           class="templateContainer"
+                           style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 604px !important;">
+                        <tr>
+                            <td valign="top" class="headerContainer"
+                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <table class="mcnImageBlock"
+                                       style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody class="mcnImageBlockOuter">
+                                    <tr>
+                                        <td style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                            class="mcnImageBlockInner" valign="top">
+                                            <table class="mcnImageContentContainer"
+                                                   style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   width="100%" cellspacing="0" cellpadding="0" border="0"
+                                                   align="left">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="mcnImageContent"
+                                                        style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        valign="top">
+
+
+                                                        <img alt=""
+                                                             src="https://mcusercontent.com/c20c8f9c6107d08b50409e0bc/images/9ebec77c-96b0-419f-806f-319b6926373a.jpg"
+                                                             style="max-width: 609px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
+                                                             class="mcnImage" width="564" align="middle">
+
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" id="templateBody"
+                    style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;">
+                    <!--[if (gte mso 9)|(IE)]>
+                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="604" style="width:604px;">
+                            <tr>
+                            <td align="center" valign="top" width="604" style="width:604px;">
+                            <![endif]-->
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+                           class="templateContainer"
+                           style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 604px !important;">
+                        <tr>
+                            <td valign="top" class="bodyContainer"
+                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <table class="mcnButtonBlock"
+                                       style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody class="mcnButtonBlockOuter">
+                                    <tr>
+                                        <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                            class="mcnButtonBlockInner" valign="top" align="center">
+                                            <table class="mcnButtonContentContainer"
+                                                   style="border-collapse: separate !important;border-radius: 4px;background-color: #2FDD29;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="mcnButtonContent"
+                                                        style="font-family: Arial;font-size: 16px;padding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        valign="middle" align="center">
+                                                        <a class="mcnButton " title="Visit Kickstarter"
+                                                           href="https://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer"
+                                                           target="_blank"
+                                                           style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Visit
+                                                            Kickstarter</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="mcnTextBlock"
+                                       style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody class="mcnTextBlockOuter">
+                                    <tr>
+                                        <td class="mcnTextBlockInner"
+                                            style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                            valign="top">
+                                            <!--[if mso]>
+<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+<tr>
+<![endif]-->
+
+                                            <!--[if mso]>
+<td valign="top" width="604" style="width:604px;">
+<![endif]-->
+                                            <table style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   class="mcnTextContentContainer" width="100%" cellspacing="0"
+                                                   cellpadding="0" border="0" align="left">
+                                                <tbody>
+                                                <tr>
+
+                                                    <td class="mcnTextContent"
+                                                        style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"
+                                                        valign="top">
+
+                                                        <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">
+                                                            Join RISC OS now!</h1>
+                                                        You have been a RISC OS user before? Then you know what
+                                                        are the benefits of RISC OS. Do you want to use it again
+                                                        as your primary operating system? Then help us to update
+                                                        RISC OS to the current technical standards.
+
+                                                        <p style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                            You are sick and tired of Windows, macOS, IOS,
+                                                            Android or Linux? Then help us to give you another
+                                                            choice for your computer or in the future for your
+                                                            mobile phone.<br>
+                                                            <br>
+                                                            We already reached the minimum financial goal of our
+                                                            Kickstarter but we still need much more support to
+                                                            achieve all the goals and improvements needed.<br>
+                                                            <br>
+                                                            One great achievement of our campaign was that we
+                                                            could motivate Simon Wilson to start working on a 3D
+                                                            GPU driver for the RockChip RK3399 boards. These are
+                                                            featured in our Puma Desktop PC and the 14-Laptop.
+                                                            It will be a big step for RISC OS to finally have
+                                                            access to the powerfull GPU features of current
+                                                            SoCs. This could be the door opener for new awesome
+                                                            games in the RISC OS world.<br>
+                                                            <br>
+                                                            Here is a list where you can contribute and help
+                                                            funding:</p>
+
+                                                        <ul>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                19 Euro RPCEmu improvements (RPCEmu is a free
+                                                                RISC OS Emulator for Windows &amp; Linux)
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                49 Euro 3D GPU driver with Mesa OpenGL support
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                49 Euro Desktop / Window handling improvements
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                49 Euro New Filer for the desktop
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                49 Euro !ArtCube photo editor
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                69 Euro !CodeCube programming IDE for RISC OS
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                39 Euro Cloverleaf RISC OS Standard distro for
+                                                                Raspberry Pi
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                69 Euro Cloverleaf RISC OS Plus distro for
+                                                                Raspberry Pi
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                199 Euro Cloverleaf Art distro for Raspberry Pi
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                299 Euro Kitten Pi Desktop PC, 2 GB RAM, 64 GB
+                                                                SD card, Cloverleaf Standard distro
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                399 Euro Puma Desktop PC, 4 GB RAM, 32 GB EMMC,
+                                                                64 GB SD card, Cloverleaf Standard distro
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                199 Euro RK3399 RISC OS SD card image for
+                                                                PineBook Pro, Cloverleaf Standard distro
+                                                            </li>
+                                                            <li style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                119 Euro RK3399 RISC OS SD card image for SBC
+                                                                RockPro64 / Radxa RockPi 4
+                                                            </li>
+                                                        </ul>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--[if mso]>
+</td>
+<![endif]-->
+
+                                            <!--[if mso]>
+</tr>
+</table>
+<![endif]-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" id="templateColumns"
+                    style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 2px solid #EAEAEA;padding-top: 0;padding-bottom: 9px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer"
+                           style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 604px !important;">
+                        <tr>
+                            <td valign="top"
+                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <!--[if (gte mso 9)|(IE)]>
+                                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="604" style="width:604px;">
+                                        <tr>
+                                        <td align="center" valign="top" width="200" style="width:200px;">
+                                        <![endif]-->
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="200"
+                                       class="columnWrapper"
+                                       style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                    <tr>
+                                        <td valign="top" class="columnContainer"
+                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <table class="mcnCaptionBlock" width="100%" cellspacing="0"
+                                                   cellpadding="0" border="0"
+                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                <tbody class="mcnCaptionBlockOuter">
+                                                <tr>
+                                                    <td class="mcnCaptionBlockInner"
+                                                        style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        valign="top">
+
+
+                                                        <table class="mcnCaptionBottomContent" cellspacing="0"
+                                                               cellpadding="0" border="0" align="left"
+                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnCaptionBottomImageContent"
+                                                                    style="padding: 0 9px 9px 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="top" align="center">
+
+
+                                                                    <img alt=""
+                                                                         src="https://mcusercontent.com/c20c8f9c6107d08b50409e0bc/images/eebce6ba-608d-a407-4686-f6ac3d0c3734.jpg"
+                                                                         style="max-width: 444px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;"
+                                                                         class="mcnImage" width="164">
+
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="mcnTextContent"
+                                                                    style="padding: 0 9px 0 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"
+                                                                    width="164" valign="top">
+                                                                    <strong>KittenPi</strong><br>
+                                                                    299 Euro / $360 / £260
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="mcnButtonBlock"
+                                                   style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody class="mcnButtonBlockOuter">
+                                                <tr>
+                                                    <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        class="mcnButtonBlockInner" valign="top" align="center">
+                                                        <table class="mcnButtonContentContainer"
+                                                               style="border-collapse: separate !important;border-radius: 3px;background-color: #4FEB4A;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                               width="100%" cellspacing="0" cellpadding="0"
+                                                               border="0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnButtonContent"
+                                                                    style="font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="middle" align="center">
+                                                                    <a class="mcnButton " title="Fund Now"
+                                                                       href="http://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer"
+                                                                       target="_blank"
+                                                                       style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Fund
+                                                                        Now</a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--[if (gte mso 9)|(IE)]>
+                                        </td>
+                                        <td align="center" valign="top" width="200" style="width:200px;">
+                                        <![endif]-->
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="200"
+                                       class="columnWrapper"
+                                       style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                    <tr>
+                                        <td valign="top" class="columnContainer"
+                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <table class="mcnCaptionBlock" width="100%" cellspacing="0"
+                                                   cellpadding="0" border="0"
+                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                <tbody class="mcnCaptionBlockOuter">
+                                                <tr>
+                                                    <td class="mcnCaptionBlockInner"
+                                                        style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        valign="top">
+
+
+                                                        <table class="mcnCaptionBottomContent" cellspacing="0"
+                                                               cellpadding="0" border="0" align="left"
+                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnCaptionBottomImageContent"
+                                                                    style="padding: 0 9px 9px 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="top" align="center">
+
+
+                                                                    <img alt=""
+                                                                         src="https://mcusercontent.com/c20c8f9c6107d08b50409e0bc/images/26920bb3-603b-f1db-eb9d-69466c4af11d.jpg"
+                                                                         style="max-width: 396px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;"
+                                                                         class="mcnImage" width="164">
+
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="mcnTextContent"
+                                                                    style="padding: 0 9px 0 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"
+                                                                    width="164" valign="top">
+                                                                    <strong>Puma RK3399</strong><br>
+                                                                    399 Euro / $480 / £340
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="mcnButtonBlock"
+                                                   style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody class="mcnButtonBlockOuter">
+                                                <tr>
+                                                    <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        class="mcnButtonBlockInner" valign="top" align="center">
+                                                        <table class="mcnButtonContentContainer"
+                                                               style="border-collapse: separate !important;border-radius: 3px;background-color: #0296EC;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                               width="100%" cellspacing="0" cellpadding="0"
+                                                               border="0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnButtonContent"
+                                                                    style="font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="middle" align="center">
+                                                                    <a class="mcnButton " title="Fund Now"
+                                                                       href="http://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer"
+                                                                       target="_blank"
+                                                                       style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Fund
+                                                                        Now</a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--[if (gte mso 9)|(IE)]>
+                                        </td>
+                                        <td align="center" valign="top" width="200" style="width:200px;">
+                                        <![endif]-->
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="200"
+                                       class="columnWrapper"
+                                       style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                    <tr>
+                                        <td valign="top" class="columnContainer"
+                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <table class="mcnCaptionBlock" width="100%" cellspacing="0"
+                                                   cellpadding="0" border="0"
+                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                <tbody class="mcnCaptionBlockOuter">
+                                                <tr>
+                                                    <td class="mcnCaptionBlockInner"
+                                                        style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        valign="top">
+
+
+                                                        <table class="mcnCaptionBottomContent" cellspacing="0"
+                                                               cellpadding="0" border="0" align="left"
+                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnCaptionBottomImageContent"
+                                                                    style="padding: 0 9px 9px 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="top" align="center">
+
+
+                                                                    <img alt=""
+                                                                         src="https://mcusercontent.com/c20c8f9c6107d08b50409e0bc/images/aa040c8b-a7f1-5433-c4cb-860375131cec.jpg"
+                                                                         style="max-width: 199px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;"
+                                                                         class="mcnImage" width="164">
+
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="mcnTextContent"
+                                                                    style="padding: 0 9px 0 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"
+                                                                    width="164" valign="top">
+                                                                    <strong>RK3399 SD image</strong><br>
+                                                                    199 Euro / $240 / £170
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="mcnButtonBlock"
+                                                   style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody class="mcnButtonBlockOuter">
+                                                <tr>
+                                                    <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        class="mcnButtonBlockInner" valign="top" align="center">
+                                                        <table class="mcnButtonContentContainer"
+                                                               style="border-collapse: separate !important;border-radius: 3px;background-color: #EB00D7;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                               width="100%" cellspacing="0" cellpadding="0"
+                                                               border="0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="mcnButtonContent"
+                                                                    style="font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="middle" align="center">
+                                                                    <a class="mcnButton " title="Fund Now"
+                                                                       href="http://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer"
+                                                                       target="_blank"
+                                                                       style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Fund
+                                                                        Now</a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--[if (gte mso 9)|(IE)]>
+                                        </td>
+                                        </tr>
+                                        </table>
+                                        <![endif]-->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" id="templateFooter"
+                    style="background:#FAFAFA none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;">
+                    <!--[if (gte mso 9)|(IE)]>
+                            <table align="center" border="0" cellspacing="0" cellpadding="0" width="604" style="width:604px;">
+                            <tr>
+                            <td align="center" valign="top" width="604" style="width:604px;">
+                            <![endif]-->
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+                           class="templateContainer"
+                           style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 604px !important;">
+                        <tr>
+                            <td valign="top" class="footerContainer"
+                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <table class="mcnFollowBlock"
+                                       style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody class="mcnFollowBlockOuter">
+                                    <tr>
+                                        <td style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                            class="mcnFollowBlockInner" valign="top" align="center">
+                                            <table class="mcnFollowContentContainer"
+                                                   style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                   width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="padding-left: 9px;padding-right: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                        align="center">
+                                                        <table style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                               class="mcnFollowContent" width="100%"
+                                                               cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style="padding-top: 9px;padding-right: 9px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                    valign="top" align="center">
+                                                                    <table cellspacing="0" cellpadding="0"
+                                                                           border="0" align="center"
+                                                                           style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td valign="top" align="center"
+                                                                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                <!--[if mso]>
+                            <table align="center" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                            <![endif]-->
+
+                                                                                <!--[if mso]>
+                                <td align="center" valign="top">
+                                <![endif]-->
+
+
+                                                                                <table style="display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                       cellspacing="0"
+                                                                                       cellpadding="0"
+                                                                                       border="0" align="left">
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <td style="padding-right: 10px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                            class="mcnFollowContentItemContainer"
+                                                                                            valign="top">
+                                                                                            <table class="mcnFollowContentItem"
+                                                                                                   width="100%"
+                                                                                                   cellspacing="0"
+                                                                                                   cellpadding="0"
+                                                                                                   border="0"
+                                                                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="padding-top: 5px;padding-right: 10px;padding-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                                        valign="middle"
+                                                                                                        align="left">
+                                                                                                        <table width=""
+                                                                                                               cellspacing="0"
+                                                                                                               cellpadding="0"
+                                                                                                               border="0"
+                                                                                                               align="left"
+                                                                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                            <tbody>
+                                                                                                            <tr>
+
+                                                                                                                <td class="mcnFollowIconContent"
+                                                                                                                    width="24"
+                                                                                                                    valign="middle"
+                                                                                                                    align="center"
+                                                                                                                    style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                                    <a href="http://www.twitter.com/riscosproject"
+                                                                                                                       target="_blank"
+                                                                                                                       style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img
+                                                                                                                            src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png"
+                                                                                                                            alt="Twitter"
+                                                                                                                            style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
+                                                                                                                            class=""
+                                                                                                                            width="24"
+                                                                                                                            height="24"></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                </td>
+                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                <td align="center" valign="top">
+                                <![endif]-->
+
+
+                                                                                <table style="display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                       cellspacing="0"
+                                                                                       cellpadding="0"
+                                                                                       border="0" align="left">
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <td style="padding-right: 10px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                            class="mcnFollowContentItemContainer"
+                                                                                            valign="top">
+                                                                                            <table class="mcnFollowContentItem"
+                                                                                                   width="100%"
+                                                                                                   cellspacing="0"
+                                                                                                   cellpadding="0"
+                                                                                                   border="0"
+                                                                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="padding-top: 5px;padding-right: 10px;padding-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                                        valign="middle"
+                                                                                                        align="left">
+                                                                                                        <table width=""
+                                                                                                               cellspacing="0"
+                                                                                                               cellpadding="0"
+                                                                                                               border="0"
+                                                                                                               align="left"
+                                                                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                            <tbody>
+                                                                                                            <tr>
+
+                                                                                                                <td class="mcnFollowIconContent"
+                                                                                                                    width="24"
+                                                                                                                    valign="middle"
+                                                                                                                    align="center"
+                                                                                                                    style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                                    <a href="https://www.facebook.com/groups/riscoscloverleaf"
+                                                                                                                       target="_blank"
+                                                                                                                       style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img
+                                                                                                                            src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png"
+                                                                                                                            alt="Facebook"
+                                                                                                                            style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
+                                                                                                                            class=""
+                                                                                                                            width="24"
+                                                                                                                            height="24"></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                </td>
+                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                <td align="center" valign="top">
+                                <![endif]-->
+
+
+                                                                                <table style="display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                       cellspacing="0"
+                                                                                       cellpadding="0"
+                                                                                       border="0" align="left">
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <td style="padding-right: 10px;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                            class="mcnFollowContentItemContainer"
+                                                                                            valign="top">
+                                                                                            <table class="mcnFollowContentItem"
+                                                                                                   width="100%"
+                                                                                                   cellspacing="0"
+                                                                                                   cellpadding="0"
+                                                                                                   border="0"
+                                                                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="padding-top: 5px;padding-right: 10px;padding-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                                        valign="middle"
+                                                                                                        align="left">
+                                                                                                        <table width=""
+                                                                                                               cellspacing="0"
+                                                                                                               cellpadding="0"
+                                                                                                               border="0"
+                                                                                                               align="left"
+                                                                                                               style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                            <tbody>
+                                                                                                            <tr>
+
+                                                                                                                <td class="mcnFollowIconContent"
+                                                                                                                    width="24"
+                                                                                                                    valign="middle"
+                                                                                                                    align="center"
+                                                                                                                    style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                                    <a href="https://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer"
+                                                                                                                       target="_blank"
+                                                                                                                       style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img
+                                                                                                                            src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-link-48.png"
+                                                                                                                            alt="Website"
+                                                                                                                            style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
+                                                                                                                            class=""
+                                                                                                                            width="24"
+                                                                                                                            height="24"></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                </td>
+                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                <td align="center" valign="top">
+                                <![endif]-->
+
+
+                                                                                <table style="display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                       cellspacing="0"
+                                                                                       cellpadding="0"
+                                                                                       border="0" align="left">
+                                                                                    <tbody>
+                                                                                    <tr>
+                                                                                        <td style="padding-right: 0;padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                            class="mcnFollowContentItemContainer"
+                                                                                            valign="top">
+                                                                                            <table class="mcnFollowContentItem"
+                                                                                                   width="100%"
+                                                                                                   cellspacing="0"
+                                                                                                   cellpadding="0"
+                                                                                                   border="0"
+                                                                                                   style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="padding-top: 5px;padding-right: 10px;padding-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
+                                                                                                        valign="middle"
+                                                                                                        align="left">
+                                                                                                        <table width="" cellspacing="0" cellpadding="0" border="0" align="left" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                            <tbody>
+                                                                                                            <tr>
+
+                                                                                                                <td class="mcnFollowIconContent"
+                                                                                                                    width="24"
+                                                                                                                    valign="middle"
+                                                                                                                    align="center"
+                                                                                                                    style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                                                                    <a href="mailto:info@riscoscloverleaf.com"
+                                                                                                                       target="_blank"
+                                                                                                                       style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"><img
+                                                                                                                            src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-forwardtofriend-48.png"
+                                                                                                                            alt="Email"
+                                                                                                                            style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
+                                                                                                                            class=""
+                                                                                                                            width="24"
+                                                                                                                            height="24"></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                </td>
+                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                </td>
+            </tr>
+        </table>
+        <!-- // END TEMPLATE -->
+    </td>
+</tr>
+</table>
+{% endspaceless %}
+{% endblock %}
+
+{% block plain_content %}
+Join RISC OS now!
+
+You have been a RISC OS user before? Then you know what are the benefits of RISC OS. Do you want to use it again as your primary operating system? Then help us to update RISC OS to the current technical standards.
+You are sick and tired of Windows, macOS, IOS, Android or Linux? Then help us to give you another choice for your computer or in the future for your mobile phone.
+
+We already reached the minimum financial goal of our Kickstarter but we still need much more support to achieve all the goals and improvements needed.
+
+One great achievement of our campaign was that we could motivate Simon Wilson to start working on a 3D GPU driver for the RockChip RK3399 boards. These are featured in our Puma Desktop PC and the 14-Laptop. It will be a big step for RISC OS to finally have access to the powerfull GPU features of current SoCs. This could be the door opener for new awesome games in the RISC OS world.
+
+Here is a list where you can contribute and help funding:
+
+19 Euro RPCEmu improvements (RPCEmu is a free RISC OS Emulator for Windows & Linux)
+49 Euro 3D GPU driver with Mesa OpenGL support
+49 Euro Desktop / Window handling improvements
+49 Euro New Filer for the desktop
+49 Euro !ArtCube photo editor
+69 Euro !CodeCube programming IDE for RISC OS
+39 Euro Cloverleaf RISC OS Standard distro for Raspberry Pi
+69 Euro Cloverleaf RISC OS Plus distro for Raspberry Pi
+199 Euro Cloverleaf Art distro for Raspberry Pi
+299 Euro Kitten Pi Desktop PC, 2 GB RAM, 64 GB SD card, Cloverleaf Standard distro
+399 Euro Puma Desktop PC, 4 GB RAM, 32 GB EMMC, 64 GB SD card, Cloverleaf Standard distro
+199 Euro RK3399 RISC OS SD card image for PineBook Pro, Cloverleaf Standard distro
+119 Euro RK3399 RISC OS SD card image for SBC RockPro64 / Radxa RockPi 4
+
+Visit kickstarter https://www.kickstarter.com/projects/riscos-cloverleaf/risc-os-built-the-future-os-for-your-powersaving-computer
+{% endblock %}

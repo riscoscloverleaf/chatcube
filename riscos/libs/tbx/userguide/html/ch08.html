@@ -1,0 +1,63 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Chapter 8. Creating a Document based application</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="index.html" title="TBX C++ toolbox library"><link rel="prev" href="ch07s04.html" title="Implementing the event/command handling"><link rel="next" href="ch09.html" title="Chapter 9. Graphics"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 8. Creating a Document based application</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s04.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch09.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 8. Creating a Document based application"><div class="titlepage"><div><div><h2 class="title"><a name="id36099533"></a>Chapter 8. Creating a Document based application</h2></div></div></div><p>
+    A document based application is an application that has a
+    specific file type associated with it that it edits.
+  </p><p>
+   A document based application has the following features.
+   </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">Creates a new document when clicking on the iconbar</li><li class="listitem">Loads a document if it is dropped on the iconbar</li><li class="listitem">Opens a document if it is double clicked in the filer</li><li class="listitem">Shows a window with the document contents</li><li class="listitem">Updates the title of the window with the filename and a "*" if a document is modified</li><li class="listitem">Shows a SaveAs window to allowing saving of the file</li><li class="listitem">Shows the Discard/Cancel/Save dialogue when trying to close a window with modified content</li><li class="listitem">Shows the Quit dialogue if you try to quit the application with unsaved documents</li><li class="listitem">Provides a FileInfo window to show details of the current document</li></ul></div><p>
+  </p><p>To set up a file type for your document you need to add the following entries to your
+  <code class="filename">!Boot</code> and <code class="filename">!Run</code> files so the Desktop can identify your file type and
+  launch your application if it is double clicked upon in the filer.
+  </p><pre class="programlisting">
+    | Variables need to be added (in this case for TbxDocEx file type hex 010)
+    
+    | Let the desktop know what to do to edit this file type
+    Set Alias$RunType_010 Run &lt;Obey$Dir&gt;.!Run %%*0
+    | Set The description for the file type
+    Set File$Type_010 "TbxDocEx"    
+  </pre><p>
+  You will also need to add an icon to your <code class="filename">!Sprites</code> file for display in the filer.
+  This is the usual 34x17 sprite the same size as your application sprite, but with the
+  name file_XXX where XXX is your file type number. (In the above example it would be file_010).
+  </p><p>
+    tbx provides a group of classes to provide a framework in the <span class="package">tbx::doc</span> namespace
+    for all of this standard functionality. You do not have
+    to use this framework, you can instead add listeners to the application for the WIMP messages
+    you need to process for this type of application and the necessary toolbox objects and functionality.
+  </p><p>
+    To use the <span class="package">tbx::doc</span> classes you need to create and add the following
+    resources to your <code class="filename">Res</code>.
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">An Iconbar named "Iconbar"</li><li class="listitem">A main Window (the name of it is passed to the DocWindow constructor)</li><li class="listitem">A SaveAs dialogue called "SaveAs"</li><li class="listitem">A DCS dialogue called "DCS"</li><li class="listitem">A Quit dialogue called "Quit"</li><li class="listitem">A FileInfo dialogue called "FileInfo"</li><li class="listitem">An icon bar menu with at least the Quit option</li><li class="listitem">A menu for the main window that has entries to show the SaveAs and FileInfo windows</li></ul></div><p>
+    You then add the following code to you <code class="function">main</code> function.
+    </p><pre class="programlisting">
+      tbx::Application docex_app("&lt;TbxDocEx$Dir&gt;");
+      tbx::doc::DocCreator&lt;TbxExDoc, TbxExWnd&gt; doc_creator(0x010);
+      tbx::doc::DocManager doc_manager(&amp;doc_creator);
+      tbx::doc::DocIconbar doc_iconbar;
+      tbx::doc::DocSaveAs doc_saveas;
+      tbx::doc::DocFileInfo doc_fileinfo;
+
+      if (argc &gt; 1) doc_manager.load_files(argc-1, argv+1);
+
+      docex_app.run();
+    </pre><p>
+    In the above listing the following would be replaced with items for your application.
+    TbxDocEx$Dir would be replaced with the path name for your resources.
+    <code class="classname">TbxExDoc</code> would be your document class (derived
+    from <code class="classname">tbx::doc::Document</code>).
+    <code class="classname">TbxExWnd</code> would be
+    your class to handle the display of the document (derived from <code class="classname">tbx::doc::DocWindow</code>).
+  </p><p>
+    With this code in place all that is then needed is to derive your document from <code class="classname">tbx::doc::Document</code>
+    (TbxExDoc in the example code above) and overload the <code class="methodname">document_size</code>,
+    <code class="methodname">load(std::istream &amp;is)</code> and <code class="methodname">save(std::ostream &amp;os)</code>
+    methods.
+  </p><p>
+     The window to display the document should be derived from tbx::doc::DocWindow
+     and modified to show the data when it is created.
+    </p><p>
+    If more functionality is required from the iconbar you may want to derive
+    a class from <code class="classname">tbx::doc::DocIconbar</code> as well.
+  </p><p>
+    There is a demo application called !TbxDocEx included in the separate TBX-Examples download
+    that shows a simple document based application.
+  </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s04.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Implementing the event/command handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 9. Graphics</td></tr></table></div></body></html>

@@ -1,0 +1,14 @@
+Source: TBX
+Version: 0.6-2
+Section: Development
+Priority: Optional
+Maintainer: Alan Buckley <alan_baa@hotmail.com>
+Standards-Version: 0.4.0
+Licence: Free
+Description: Example programs for the TBX C++ library.
+ This package installs a TbxExamples folder that contains various examples
+ of the use of the TBX C++ library.
+
+Package: TBX-Examples
+Components: Apps.Development.TbxExamples (Movable)
+Recommends: TBX-Dev

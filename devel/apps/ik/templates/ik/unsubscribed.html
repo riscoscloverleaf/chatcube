@@ -1,0 +1,10 @@
+{% extends "ik/layout.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% if already_unsubscribed %}
+        <p>{% blocktrans with email=member.email %}Your email <b>{{ email }}</b> has been unsubscribed already{% endblocktrans %}</p>
+    {% else %}
+    <p>{% blocktrans with email=member.email %}Your email <b>{{ email }}</b> has been unsubscribed{% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}

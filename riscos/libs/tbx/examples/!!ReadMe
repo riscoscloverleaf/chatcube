@@ -1,0 +1,18 @@
+This directory contains some examples of using TBX.
+
+Each application has a !Help file giving details of what they demonstrate.
+
+Inside each directory is included a src sub-directory containing
+the source code for the example and a makefile to build the example.
+
+All examples are released under the same copyright as TBX (The X11 License).
+See the COPYING file in the TBX directory for details.
+
+The examples are:
+
+!TbxMin   - This is a minimum tbx application
+!Reverser - Show how to use objects and events
+!StopWatch - use of a timer
+!IconView - A simple application showing how to create a "filer-like" view
+!TbxDocEx - Shows a document type application
+!Graphics - Shows use of OffsetGraphics class to draw shapes, text and images

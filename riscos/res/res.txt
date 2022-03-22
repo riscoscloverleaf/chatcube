@@ -1,0 +1,6095 @@
+RESF:1.01
+
+iconbar_object {
+  header_flags:toolbox_OBJECT_CREATE_ON_LOAD | toolbox_OBJECT_SHOW_ON_CREATE
+  version:100
+  object_name:"Iconbar"
+  iconbar_flags:iconbar_GENERATE_SELECT_CLICKED
+  position:wimp_ICON_BAR_RIGHT_LOW_PRIORITY
+  priority:0
+  sprite_name:"!chatcube"
+  sprite_limit:15
+  text:""
+  text_limit:*
+  menu:"IbarMenu"
+  select_action:&101
+  adjust_action:&0
+  select_show:""
+  adjust_show:""
+  help_message:""
+  help_limit:*
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"IbarMenu"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"ChatCube"
+  title_limit:*
+  help:"This is ChatCube main menu."
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:0
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&0
+    text:"Info"
+    text_limit:11
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&102
+    click_action:&0
+    help:"Information on this application."
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&3
+    text:"Choices"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"edProfMenu"
+    sub_menu_action:&0
+    click_action:&451
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&6
+    text:"New Chat"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"CrtChatMnu"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_SUB_MENU | menu_ENTRY_GENERATE_SUB_MENU_ACTION
+    cmp:&5
+    text:"Add Messenger"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:"addMessMenu"
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_SEPARATE
+    cmp:&7
+    text:"Downloads"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&454
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Logout"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&452
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Quit"
+    text_limit:11
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1
+    help:"Click here to exit the application."
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"LoginWindow"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&1
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:660,770,1356,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NO_BOUNDS | wimp_WINDOW_BOUNDED | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-724,696,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Please login"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:32,-300,212,-248
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"E-mail"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:228,-300,668,-248
+    help_message:"Please enter your e-mail"
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:&3
+  }
+  label_object {
+    cmp:&2
+    bbox:32,-384,220,-332
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Password"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:228,-384,668,-332
+    help_message:"Enter your password"
+    help_limit:*
+    flags:writablefield_CONCEAL_TEXT
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&1
+    next:&4
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:336,-552,672,-484
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Login"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:32,-552,320,-484
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&6
+    bbox:32,-628,672,-576
+    help_message:"Don't have account? Register here"
+    help_limit:*
+    flags:actionbutton_SHOW_AT_CENTRE
+    text:"Register"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&7
+    bbox:280,-200,444,-40
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"logo_text"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&8
+    bbox:32,-696,672,-644
+    help_message:""
+    help_limit:*
+    flags:actionbutton_SHOW_AT_CENTRE
+    text:"Reset password"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  optionbutton_object {
+    cmp:&9
+    bbox:36,-456,668,-412
+    help_message:""
+    help_limit:*
+    flags:optionbutton_ON
+    label:"Auto login"
+    label_limit:*
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ChatToolbar"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&201
+  hide_action:&202
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:696,1348,1980,1496
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-148,4000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:300
+  window.ymin:148
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  writablefield_object {
+    cmp:&1
+    bbox:12,-140,1272,-88
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:999
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&3
+    bbox:-1208,-1016,-1144,-952
+    help_message:"Send message"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"send_msg"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  toolaction_object {
+    cmp:&4
+    bbox:16,-72,80,-8
+    help_message:"Open stickers panel"
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_SHOW_AS_POP_UP
+    off_text:"smile_sm"
+    off_text_limit:*
+    on_text:"smile_sm"
+    on_text_limit:*
+    click_action:&1010
+    select_show:""
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+  toolaction_object {
+    cmp:&5
+    bbox:160,-72,224,-8
+    help_message:"Make screenshot"
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_SHOW_TRANSIENT | toolaction_SHOW_AS_POP_UP
+    off_text:"screenshotsms"
+    off_text_limit:*
+    on_text:"screenshotsm"
+    on_text_limit:*
+    click_action:&0
+    select_show:"scrShotMenu"
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+  toolaction_object {
+    cmp:&9
+    bbox:80,-72,144,-8
+    help_message:""
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_SHOW_AS_POP_UP
+    off_text:"attach_sm"
+    off_text_limit:*
+    on_text:"attach_sm"
+    on_text_limit:*
+    click_action:&0
+    select_show:"AttachInfo"
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+  button_object {
+    cmp:&a
+    bbox:1212,-68,1268,-16
+    help_message:"Toggle seach for chats and ordering mode"
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_NEEDS_HELP | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Ssearch"
+    validation_limit:100
+  }
+  actionbutton_object {
+    cmp:&b
+    bbox:1040,-68,1192,-16
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&1011
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ChatMsgList"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:2,90,1558,1158
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-10024,3960,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_REPEAT | wimp_BUTTON_DOUBLE_DRAG
+  window.sprite_area:&0
+  window.xmin:1500
+  window.ymin:600
+  window.title_text:"ChatCube"
+  window.title_text_limit:200
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"Register"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&300
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:808,310,1448,1686
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1376,640,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Registration"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:16,-660,616,-596
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"E-mail"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:16,-724,616,-672
+    help_message:"Enter your e-mail here"
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&13
+    next:&5
+  }
+  label_object {
+    cmp:&2
+    bbox:16,-364,616,-312
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Display name"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:16,-436,616,-384
+    help_message:"This name will be visible to other people"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&12
+    next:&13
+  }
+  label_object {
+    cmp:&4
+    bbox:16,-788,616,-736
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Password"
+  }
+  writablefield_object {
+    cmp:&5
+    bbox:16,-848,616,-796
+    help_message:"Enter your password here"
+    help_limit:*
+    flags:writablefield_CONCEAL_TEXT
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&1
+    next:&7
+  }
+  label_object {
+    cmp:&6
+    bbox:16,-916,616,-864
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Confirm password"
+  }
+  writablefield_object {
+    cmp:&7
+    bbox:16,-980,616,-928
+    help_message:"Confirm your password"
+    help_limit:*
+    flags:writablefield_CONCEAL_TEXT
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&5
+    next:&15
+  }
+  actionbutton_object {
+    cmp:&8
+    bbox:316,-1344,620,-1276
+    help_message:"Register to chat"
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Register"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&9
+    bbox:16,-1344,272,-1280
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  stringset_object {
+    cmp:&a
+    bbox:16,-1248,616,-1196
+    help_message:"Select or type your system"
+    help_limit:*
+    flags:stringset_WRITABLE
+    string_set:"Acorn A305/A310,Acorn A4000,Acorn A4 Laptop,Acorn A410/A440,Acorn A5000,Acorn A3000/A3010/A3020,Acorn A7000,Acorn RiscPC,ARMX6,Iyonix,Titan,Elesar Titanium,PCEMU,Cloverleaf,Raspberry 3,Raspberry 4"
+    title:"System"
+    initial_selected_string:"Raspberry 3"
+    selected_string_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&c
+    next:&11
+  }
+  label_object {
+    cmp:&b
+    bbox:280,-1048,616,-996
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Mobile phone"
+  }
+  writablefield_object {
+    cmp:&c
+    bbox:280,-1112,616,-1060
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:&15
+    next:&a
+  }
+  label_object {
+    cmp:&d
+    bbox:16,-1180,616,-1128
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Your system"
+  }
+  label_object {
+    cmp:&e
+    bbox:16,-68,616,-4
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Firstname"
+  }
+  label_object {
+    cmp:&f
+    bbox:16,-220,616,-156
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Lastname"
+  }
+  label_object {
+    cmp:&10
+    bbox:16,-532,616,-468
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube ID"
+  }
+  writablefield_object {
+    cmp:&11
+    bbox:16,-140,616,-88
+    help_message:"Enter your firstname"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&a
+    next:&12
+  }
+  writablefield_object {
+    cmp:&12
+    bbox:16,-288,616,-236
+    help_message:"Enter your lastname"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&11
+    next:&3
+  }
+  writablefield_object {
+    cmp:&13
+    bbox:16,-584,616,-532
+    help_message:""
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&3
+    next:&1
+  }
+  label_object {
+    cmp:&14
+    bbox:16,-1048,288,-996
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Country code"
+  }
+  writablefield_object {
+    cmp:&15
+    bbox:20,-1112,260,-1060
+    help_message:"Enter you country phone code"
+    help_limit:*
+    flags:
+    text:""
+    text_limit:10
+    allowable:""
+    allowable_limit:*
+    prev:&7
+    next:&c
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"MemberList"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&221
+  hide_action:&222
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:504,442,1156,1534
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-4000,652,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_REPEAT | wimp_BUTTON_DOUBLE_DRAG
+  window.sprite_area:&0
+  window.xmin:652
+  window.ymin:500
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"NotImplemen"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:720,1162,1412,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Not implemented"
+  window.title_text_limit:*
+  window.title_valid:""
+  displayfield_object {
+    cmp:&0
+    bbox:20,-188,672,-20
+    help_message:""
+    help_limit:*
+    flags:displayfield_HCENTRED
+    text:"Sorry, this feature will be implemented later"
+    text_limit:*
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:112,-304,576,-240
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Close"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ProgInfo"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:868,628,1788,1160
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"About program"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:20,-148,148,-20
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"logo"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&1
+    bbox:168,-44,724,-12
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube"
+  }
+  label_object {
+    cmp:&2
+    bbox:168,-92,1040,-60
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Multi Client  Messenger for RISCOS"
+  }
+  button_object {
+    cmp:&3
+    bbox:168,-140,724,-108
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Version 0.01"
+    value_limit:20
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&4
+    bbox:16,-196,1016,-156
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Part of RISCOS CloverLeaf project"
+  }
+  button_object {
+    cmp:&5
+    bbox:16,-236,1028,-196
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_DARK_BLUE
+    button_bg:wimp_COLOUR_WHITE
+    value:"www.riscoscloverleaf.com"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&6
+    bbox:16,-288,1024,-248
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Project Manager: Stefan Froehling"
+  }
+  label_object {
+    cmp:&7
+    bbox:16,-348,996,-308
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Programmed by:"
+  }
+  label_object {
+    cmp:&8
+    bbox:48,-392,888,-352
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Aleksey Murushkin"
+  }
+  label_object {
+    cmp:&9
+    bbox:44,-428,868,-388
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Sergey Lentsov"
+  }
+  actionbutton_object {
+    cmp:&a
+    bbox:396,-504,584,-452
+    help_message:""
+    help_limit:*
+    flags:actionbutton_SHOW_AT_CENTRE
+    text:"Credits"
+    text_limit:*
+    click_show:"CreditsWin"
+    action:&0
+  }
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"ImageMenu"
+  menu_flags:
+  title:"Image"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:0
+    flags:0x4000
+    cmp:&0
+    text:"Save as..."
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&510
+    help:""
+    help_limit:*
+  }
+}
+
+saveas_object {
+  header_flags:
+  version:100
+  object_name:"FileSaveAs"
+  saveas_flags:saveas_GENERATE_ABOUT_TO_BE_SHOWN | saveas_NO_SELECTION_BUTTON | saveas_GIVEN_DATA
+  file_name:""
+  file_type:&0
+  title:""
+  title_limit:*
+  alternative_window_name:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"reset1"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,1212,1360,1480
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-268,680,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Reset password"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&2
+    bbox:20,-80,208,-28
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Email"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:212,-80,652,-28
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:16,-168,660,-100
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Send verification code"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:16,-240,660,-188
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"reset2"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1224,1048,1904,1332
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-424,692,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Enter verification code"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:20,-84,208,-32
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Code"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:212,-84,656,-32
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:12,-176,656,-108
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Check verification code"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:12,-248,656,-196
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"reset3"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1242,800,2046,1172
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-424,892,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Set new password"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:20,-84,288,-32
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"New password"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:336,-84,780,-32
+    help_message:""
+    help_limit:*
+    flags:writablefield_CONCEAL_TEXT
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&3
+    next:&3
+  }
+  label_object {
+    cmp:&2
+    bbox:20,-176,300,-124
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Repeat password"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:340,-172,780,-120
+    help_message:""
+    help_limit:*
+    flags:writablefield_CONCEAL_TEXT
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&1
+    next:&1
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:76,-280,720,-212
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Set new password"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:76,-352,720,-300
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"edProfMenu"
+  menu_flags:
+  title:"Edit Profile"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Change Avatar"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&450
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Edit Profile and Settings"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&451
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"changAvatar"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:886,806,2006,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-688,1120,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Change Avatar"
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"editProfile"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&480
+  hide_action:&481
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:772,994,1760,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-500,988,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Edit Profile"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:20,-128,132,-16
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"avatar"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&1
+    bbox:164,-72,564,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"First name"
+  }
+  label_object {
+    cmp:&2
+    bbox:164,-136,564,-84
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Last name"
+  }
+  label_object {
+    cmp:&3
+    bbox:164,-200,564,-148
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Display name"
+  }
+  label_object {
+    cmp:&4
+    bbox:164,-264,564,-212
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube ID"
+  }
+  label_object {
+    cmp:&5
+    bbox:164,-328,564,-276
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"E-mail"
+  }
+  label_object {
+    cmp:&6
+    bbox:164,-392,564,-340
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Mobile phone"
+  }
+  writablefield_object {
+    cmp:&7
+    bbox:468,-72,968,-20
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&c
+    next:&8
+  }
+  writablefield_object {
+    cmp:&8
+    bbox:468,-136,968,-84
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&7
+    next:&9
+  }
+  writablefield_object {
+    cmp:&9
+    bbox:468,-200,968,-148
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&8
+    next:&a
+  }
+  writablefield_object {
+    cmp:&a
+    bbox:468,-264,968,-212
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:100
+    allowable:""
+    allowable_limit:*
+    prev:&9
+    next:&b
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:468,-328,968,-276
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:&a
+    next:&c
+  }
+  writablefield_object {
+    cmp:&c
+    bbox:468,-392,968,-340
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:&b
+    next:&7
+  }
+  actionbutton_object {
+    cmp:&d
+    bbox:676,-480,964,-412
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Save"
+    text_limit:*
+    click_show:""
+    action:&482
+  }
+  actionbutton_object {
+    cmp:&e
+    bbox:372,-472,660,-420
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"AttachInfo"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:720,1222,1404,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Send attachment"
+  window.title_text_limit:*
+  window.title_valid:""
+  actionbutton_object {
+    cmp:&1
+    bbox:108,-228,572,-164
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Close"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  label_object {
+    cmp:&2
+    bbox:48,-88,648,-36
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Drag a photo or file to chat window"
+  }
+  label_object {
+    cmp:&3
+    bbox:48,-152,648,-100
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"to send it"
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"reset1phone"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,1096,1364,1480
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-424,692,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Reset password"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:20,-84,208,-32
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Phone"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:212,-84,656,-32
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&2
+    bbox:20,-176,208,-124
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"or Email"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:212,-176,652,-124
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:16,-280,660,-212
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Send verification code"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:16,-352,660,-300
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"stickers"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:926,806,2046,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-688,1120,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Choose sticker"
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"FileMenu"
+  menu_flags:
+  title:"File"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:0
+    flags:0x4000
+    cmp:&0
+    text:"Save as..."
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&510
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"optionsMain"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:8,168,1540,1152
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,2048,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Edit choices"
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab2"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,174,1132,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:64,-120,576,-64
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:" Open chat on new message"
+    value_limit:128
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:64,-192,584,-136
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:" Sound notification"
+    value_limit:32
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&4
+    bbox:64,-488,592,-424
+    help_message:"Start hidden. Don't open main window at start."
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:" Start hidden"
+    value_limit:25
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  label_object {
+    cmp:&5
+    bbox:36,-432,224,-380
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Startup"
+  }
+  label_object {
+    cmp:&6
+    bbox:36,-64,292,-12
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Notification"
+  }
+  stringset_object {
+    cmp:&7
+    bbox:64,-312,480,-260
+    help_message:""
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED
+    string_set:"After 12 hours,After 24 hours,After 2 days,After 4 days,After 7 days,Never"
+    title:""
+    initial_selected_string:"After 2 days"
+    selected_string_limit:15
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&8
+    bbox:60,-256,1160,-204
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Send notification by email about unread messages"
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_left"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:568,178,968,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,400,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  radiobutton_object {
+    cmp:&0
+    bbox:16,-456,388,-376
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"      Chatcube profile"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&1
+    bbox:16,-92,388,-12
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED | radiobutton_ON
+    group:0
+    label:"General"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&2
+    bbox:16,-184,388,-104
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"Chats"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&4
+    bbox:16,-276,388,-196
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"Privacy"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&5
+    bbox:16,-368,388,-288
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"Version"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&6
+    bbox:16,-548,388,-468
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"      Telegram profile"
+    label_limit:*
+    action:&0
+  }
+  button_object {
+    cmp:&7
+    bbox:56,-440,116,-400
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"small_cq"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&8
+    bbox:56,-536,116,-488
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"small_tg"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab1"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&481
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,180,1224,1200
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_HSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_WHITE
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&1
+    bbox:364,-72,616,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"First name"
+  }
+  label_object {
+    cmp:&2
+    bbox:364,-136,616,-84
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Last name"
+  }
+  label_object {
+    cmp:&3
+    bbox:364,-200,616,-148
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Display name"
+  }
+  label_object {
+    cmp:&4
+    bbox:364,-264,616,-212
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube ID"
+  }
+  label_object {
+    cmp:&5
+    bbox:364,-328,616,-276
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"E-mail"
+  }
+  label_object {
+    cmp:&6
+    bbox:364,-392,616,-340
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Mobile phone"
+  }
+  writablefield_object {
+    cmp:&7
+    bbox:620,-72,1104,-20
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&8
+    bbox:620,-136,1104,-84
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&9
+    bbox:620,-200,1104,-148
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&a
+    bbox:620,-264,1104,-212
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&b
+    bbox:620,-328,1104,-276
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&c
+    bbox:620,-392,1104,-340
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&d
+    bbox:620,-456,1104,-404
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  stringset_object {
+    cmp:&e
+    bbox:620,-520,1104,-468
+    help_message:""
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED
+    string_set:""
+    title:"Country"
+    initial_selected_string:""
+    selected_string_limit:255
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&f
+    bbox:364,-456,616,-404
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"City"
+  }
+  label_object {
+    cmp:&10
+    bbox:364,-520,616,-468
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Country"
+  }
+  actionbutton_object {
+    cmp:&11
+    bbox:840,-712,1108,-644
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"Save changes"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&12
+    bbox:20,-328,332,-20
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"prof_empty"
+    value_limit:16
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&13
+    bbox:292,-332,332,-296
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"icon_camera"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&14
+    bbox:48,-712,320,-660
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Delete account"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  writablefield_object {
+    cmp:&15
+    bbox:616,-584,1108,-532
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&16
+    bbox:364,-584,552,-532
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Web site"
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab3"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,174,1132,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:56,-76,1408,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"URL Preview"
+  }
+  button_object {
+    cmp:&1
+    bbox:76,-132,1428,-76
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Show thumbnail and title of website"
+    value_limit:50
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:76,-204,1428,-148
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Auto-play animated GIF's"
+    value_limit:50
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  label_object {
+    cmp:&3
+    bbox:64,-508,1416,-456
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Chat history"
+  }
+  label_object {
+    cmp:&4
+    bbox:64,-572,1416,-520
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Your chat history in all chats will be permanently deleted."
+  }
+  toolaction_object {
+    cmp:&5
+    bbox:68,-680,380,-584
+    help_message:""
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_IS_TEXT
+    off_text:"Delete"
+    off_text_limit:*
+    on_text:""
+    on_text_limit:*
+    click_action:&0
+    select_show:""
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab4"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,174,1132,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab6"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:436,128,1544,1092
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_WHITE
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:228,-76,728,-24
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube"
+  }
+  button_object {
+    cmp:&1
+    bbox:52,-168,188,-32
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"logo"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:228,-144,728,-92
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Latest version"
+    value_limit:30
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&3
+    bbox:228,-208,728,-156
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Your version"
+    value_limit:30
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&4
+    bbox:816,-148,1072,-44
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_LIGHT_GREEN
+    value:"Update"
+    value_limit:8
+    validation:"R6"
+    validation_limit:*
+  }
+  label_object {
+    cmp:&5
+    bbox:48,-288,960,-236
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Update history"
+  }
+  textarea_object {
+    cmp:&6
+    bbox:48,-932,1080,-292
+    help_message:""
+    help_limit:*
+    flags:textarea_STATE_HAS_VERTICAL_SCROLLBAR | textarea_STATE_WORDWRAPPING_ENABLED
+    type:0
+    event:0
+    text:""
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab5"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,174,1132,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:64,-92,1196,-36
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Allow find my ChatCube ID"
+    value_limit:32
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1
+    bbox:64,-204,1196,-148
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Allow find my phone number"
+    value_limit:*
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:64,-316,1196,-260
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Allow find my email address"
+    value_limit:*
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&3
+    bbox:64,-432,1196,-376
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_RADIO
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"     Show myself in the public chat"
+    value_limit:*
+    validation:"Soptoffgr,optongr"
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"confirmSend"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:368,1240,1052,1472
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_FURNITURE_WINDOW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Confirm send screenshot"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:16,-116,684,-32
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Do you want to send screenshot to chat?"
+  }
+  actionbutton_object {
+    cmp:&1
+    bbox:96,-184,284,-132
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:396,-192,600,-124
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Send"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"tg_authcode"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&2
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,1036,1360,1552
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-516,680,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Enter authorization code"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:20,-160,660,-16
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Please enter your authorization code"
+    value_limit:255
+    validation:"L40"
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&2
+    bbox:20,-240,660,-188
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:16,-348,660,-280
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Continue"
+    text_limit:200
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:16,-416,660,-364
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Change phone number"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:16,-488,660,-436
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"tg_reg"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&1
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,192,2052,1480
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1288,1372,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Registration"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:16,-88,204,-36
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Firstname"
+  }
+  writablefield_object {
+    cmp:&1
+    bbox:208,-88,1344,-36
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&2
+    bbox:16,-152,204,-100
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Lastname"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:208,-152,1344,-100
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:704,-1272,1348,-1204
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Register"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:32,-1264,676,-1212
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  optionbutton_object {
+    cmp:&6
+    bbox:28,-236,1340,-192
+    help_message:""
+    help_limit:*
+    flags:
+    label:"Accept terms of service"
+    label_limit:*
+    action:&0
+  }
+  textarea_object {
+    cmp:&7
+    bbox:24,-1168,1352,-256
+    help_message:""
+    help_limit:*
+    flags:textarea_STATE_HAS_VERTICAL_SCROLLBAR | textarea_STATE_WORDWRAPPING_ENABLED | gadget_FADED
+    type:0
+    event:0
+    text:""
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"tg_tos"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,192,2052,1260
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1068,1372,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Update to Telegram Terms Of Serivce"
+  window.title_text_limit:*
+  window.title_valid:""
+  textarea_object {
+    cmp:&1
+    bbox:24,-948,1352,-36
+    help_message:""
+    help_limit:*
+    flags:textarea_STATE_HAS_VERTICAL_SCROLLBAR | textarea_STATE_WORDWRAPPING_ENABLED | gadget_FADED
+    type:0
+    event:0
+    text:""
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:704,-1044,1348,-992
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Accept"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:32,-1044,676,-992
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Decline"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"tg_passw"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&2
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,1036,1360,1480
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-444,680,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Enter password"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:20,-160,660,-16
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Please enter your password"
+    value_limit:255
+    validation:""
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&2
+    bbox:20,-240,660,-188
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:16,-344,660,-276
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Continue"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:16,-416,660,-364
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"tg_phone"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&2
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:680,1036,1360,1480
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-444,680,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Enter your Telegram phone number"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:20,-160,660,-16
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Please enter your Telegram phone number"
+    value_limit:255
+    validation:"*"
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&2
+    bbox:20,-240,660,-188
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:16,-344,660,-276
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Continue"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:16,-416,660,-364
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"opt_tab7"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&480
+  hide_action:&481
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,174,1276,1198
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_WHITE
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&1
+    bbox:364,-136,632,-84
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"First name"
+  }
+  label_object {
+    cmp:&2
+    bbox:364,-200,632,-148
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Last name"
+  }
+  label_object {
+    cmp:&3
+    bbox:364,-264,632,-212
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Username"
+  }
+  label_object {
+    cmp:&4
+    bbox:364,-328,632,-276
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Mobile phone"
+  }
+  writablefield_object {
+    cmp:&7
+    bbox:636,-136,1104,-84
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&8
+    bbox:636,-200,1104,-148
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&9
+    bbox:636,-264,1104,-212
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  writablefield_object {
+    cmp:&a
+    bbox:636,-328,932,-276
+    help_message:""
+    help_limit:*
+    flags:gadget_FADED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&b
+    bbox:360,-68,696,-16
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Telegram settings"
+  }
+  actionbutton_object {
+    cmp:&c
+    bbox:944,-328,1104,-272
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Change"
+    text_limit:15
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&d
+    bbox:848,-420,1108,-352
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"Save changes"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&e
+    bbox:20,-412,508,-360
+    help_message:"Unregister (unbind) your Telegram account from your Chatcube account"
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Unregister Telegram account"
+    text_limit:200
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&f
+    bbox:12,-328,328,-12
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"prof_empty"
+    value_limit:16
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&10
+    bbox:284,-332,328,-292
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"icon_camera"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"addMessMenu"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Add Messenger"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&601
+  hide_action:
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Telegram"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&453
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_FADED
+    cmp:&3
+    text:"Jabber"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:8
+    flags:menu_ENTRY_FADED
+    cmp:&8
+    text:"IRC"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_FADED
+    cmp:&7
+    text:"Matrix"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:5
+    flags:menu_ENTRY_FADED
+    cmp:&5
+    text:"Signal"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"scrShotMenu"
+  menu_flags:
+  title:"Make screenshot"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Full Screen"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1001
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:menu_ENTRY_SEPARATE
+    cmp:&1
+    text:"Select Area"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1002
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Full Screen (hide chat)"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1003
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_SEPARATE
+    cmp:&3
+    text:"Select Area (hide chat)"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1004
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"Window (hide chat)"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1005
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"transparent"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,240,1312,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NO_BOUNDS | wimp_WINDOW_BOUNDED | wimp_WINDOW_FURNITURE_WINDOW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_TRANSPARENT
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_TRANSPARENT
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-10240,12800,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"pane"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,1248,132,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_PANE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TOGGLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_VERY_DARK_GREY
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-16,100,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:16
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"MsgMenu"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN | menu_GENERATE_DIALOGUE_COMPLETED
+  title:"Message"
+  title_limit:200
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:&0
+  Entry {
+    cmp:5
+    flags:
+    cmp:&5
+    text:"Edit"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1005
+    help:"Edit message"
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Delete"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1001
+    help:"Delete selected message from your history"
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:menu_ENTRY_SEPARATE
+    cmp:&2
+    text:"Unsend"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1002
+    help:"Unsend message (remove at recipient too)"
+    help_limit:*
+  }
+  Entry {
+    cmp:6
+    flags:
+    cmp:&6
+    text:"Reply"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1006
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:menu_ENTRY_SEPARATE
+    cmp:&4
+    text:"Forward"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1004
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:7
+    flags:menu_ENTRY_SEPARATE
+    cmp:&7
+    text:"Private chat"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1007
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:menu_ENTRY_SEPARATE
+    cmp:&3
+    text:"Download"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1003
+    help:"Download attachment"
+    help_limit:*
+  }
+  Entry {
+    cmp:8
+    flags:
+    cmp:&8
+    text:"Copy to clipboard"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1008
+    help:""
+    help_limit:*
+  }
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"ChatMenu"
+  menu_flags:
+  title:"Chat"
+  title_limit:100
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:5
+    flags:
+    cmp:&5
+    text:"Download History"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1005
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Clear History"
+    text_limit:200
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1002
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:1
+    flags:menu_ENTRY_SEPARATE
+    cmp:&1
+    text:"Delete Chat"
+    text_limit:200
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1001
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:3
+    flags:
+    cmp:&3
+    text:"Manage group"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1003
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:4
+    flags:
+    cmp:&4
+    text:"View profile"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&1004
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"chatConfrm1"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:844,1112,1736,1436
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Confirmation"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:20,-72,872,-12
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Are you sure to delete history of chat?"
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  optionbutton_object {
+    cmp:&1
+    bbox:32,-196,668,-148
+    help_message:""
+    help_limit:*
+    flags:
+    label:"Clear also for:"
+    label_limit:200
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:36,-292,368,-232
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"No"
+    text_limit:50
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:516,-292,864,-232
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Yes"
+    text_limit:50
+    click_show:""
+    action:&1001
+  }
+  label_object {
+    cmp:&4
+    bbox:24,-132,868,-76
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"This action can not be undone!"
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"chatConfrm2"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:844,1112,1736,1348
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Confirmation"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:20,-72,872,-12
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Are you sure to delete history of chat?"
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:36,-212,368,-152
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"No"
+    text_limit:50
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:516,-212,864,-152
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Yes"
+    text_limit:50
+    click_show:""
+    action:&1001
+  }
+  label_object {
+    cmp:&4
+    bbox:24,-132,868,-76
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"This action can not be undone!"
+  }
+}
+
+menu_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"CrtChatMnu"
+  menu_flags:menu_GENERATE_ABOUT_TO_BE_SHOWN
+  title:"Create chat"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:&0
+  hide_action:
+  Entry {
+    cmp:1
+    flags:
+    cmp:&1
+    text:"Chatcube"
+    text_limit:100
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&470
+    help:""
+    help_limit:*
+  }
+  Entry {
+    cmp:2
+    flags:
+    cmp:&2
+    text:"Telegram"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&471
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"CrtChatWin"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:452,434,1548,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1224,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Create chat"
+  window.title_text_limit:200
+  window.title_valid:""
+  radiobutton_object {
+    cmp:&0
+    bbox:40,-96,400,-52
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED | radiobutton_ON
+    group:0
+    label:"Private chat"
+    label_limit:*
+    action:&0
+  }
+  radiobutton_object {
+    cmp:&1
+    bbox:40,-148,396,-104
+    help_message:""
+    help_limit:*
+    flags:radiobutton_GENERATE_STATE_CHANGED
+    group:0
+    label:"Group chat, title:"
+    label_limit:*
+    action:&0
+  }
+  labelledbox_object {
+    cmp:&2
+    bbox:16,-172,1080,-12
+    help_message:""
+    help_limit:*
+    flags:gadget_AT_BACK
+    label:"Chat type"
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:392,-152,1060,-100
+    help_message:""
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED | gadget_FADED
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:876,-1044,1080,-976
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"Create"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:664,-1036,852,-984
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  labelledbox_object {
+    cmp:&6
+    bbox:16,-964,1080,-176
+    help_message:""
+    help_limit:*
+    flags:gadget_AT_BACK
+    label:"Chat members"
+  }
+  button_object {
+    cmp:&7
+    bbox:32,-272,84,-220
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"search"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&8
+    bbox:88,-272,1060,-220
+    help_message:"Find the chat by title"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"chAvatarOpt"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:600,892,1308,1296
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-404,708,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Upload photo or choose avatar"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:76,-180,668,-40
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_VERY_LIGHT_GREY
+    value:"Upload photo"
+    value_limit:*
+    validation:"Supload"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&1
+    bbox:76,-360,668,-220
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_VERY_LIGHT_GREY
+    value:"Choose avatar"
+    value_limit:*
+    validation:"Ssmilebl"
+    validation_limit:*
+  }
+  button_object {
+    cmp:&2
+    bbox:40,-180,76,-40
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_FILLED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_VERY_LIGHT_GREY
+    value:""
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  button_object {
+    cmp:&3
+    bbox:40,-360,76,-220
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_FILLED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_VERY_LIGHT_GREY
+    value:""
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"dragPhoto"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:500,980,1096,1256
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-276,596,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Drag photo here"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:-24,-60,616,-16
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Drag photo here"
+  }
+  button_object {
+    cmp:&1
+    bbox:168,-268,436,-24
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Drag_photo"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"paneVScr"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:1176,1324,1276,1424
+  window.xscroll:0
+  window.yscroll:-96
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_PANE | wimp_WINDOW_SCROLL_REPEAT | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_VSCROLL | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-200,200,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"MembersWin"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:766,474,2046,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Select members"
+  window.title_text_limit:200
+  window.title_valid:""
+  labelledbox_object {
+    cmp:&2
+    bbox:16,-124,1264,-12
+    help_message:""
+    help_limit:*
+    flags:gadget_AT_BACK
+    label:"Selected"
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:1060,-1004,1264,-936
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:844,-996,1032,-944
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  labelledbox_object {
+    cmp:&6
+    bbox:16,-920,1264,-132
+    help_message:""
+    help_limit:*
+    flags:gadget_AT_BACK
+    label:"Members"
+  }
+  label_object {
+    cmp:&8
+    bbox:132,-104,316,-52
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"member(s):"
+  }
+  displayfield_object {
+    cmp:&9
+    bbox:32,-104,136,-52
+    help_message:""
+    help_limit:*
+    flags:displayfield_HCENTRED
+    text:"0"
+    text_limit:5
+  }
+  displayfield_object {
+    cmp:&a
+    bbox:320,-104,1244,-52
+    help_message:""
+    help_limit:*
+    flags:displayfield_HCENTRED
+    text:""
+    text_limit:80
+  }
+  button_object {
+    cmp:&b
+    bbox:28,-224,84,-176
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"search"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&c
+    bbox:92,-228,1244,-176
+    help_message:"Search chats or members by typed substring"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"progressBar"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:584,1048,1704,1188
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"ChatCube"
+  window.title_text_limit:200
+  window.title_valid:""
+  displayfield_object {
+    cmp:&1
+    bbox:16,-64,1108,-12
+    help_message:""
+    help_limit:*
+    flags:displayfield_HCENTRED
+    text:"Loading.."
+    text_limit:200
+  }
+  slider_object {
+    cmp:&2
+    bbox:12,-128,1108,-72
+    help_message:""
+    help_limit:*
+    flags:slider_KNOB_COLOUR_MID_DARK_GREY
+    lower_bound:0
+    upper_bound:100
+    step_size:1
+    initial_value:0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ChListTbar"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&5
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:156,1156,848,1228
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-72,692,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:692
+  window.ymin:72
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&2
+    bbox:12,-60,168,-12
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Order by"
+  }
+  stringset_object {
+    cmp:&3
+    bbox:184,-60,548,-8
+    help_message:""
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED
+    string_set:"Last message,Online,Alphabetic"
+    title:"Ordering"
+    initial_selected_string:"Last message"
+    selected_string_limit:*
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&4
+    bbox:564,-60,620,-8
+    help_message:"Toggle seach for chats and ordering mode"
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_NEEDS_HELP | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:8
+    validation:"R1;Ssearch"
+    validation_limit:100
+  }
+  writablefield_object {
+    cmp:&5
+    bbox:188,-96,548,-44
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&6
+    bbox:4,-92,168,-40
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Search"
+  }
+  toolaction_object {
+    cmp:&7
+    bbox:628,-60,684,-8
+    help_message:"Create new chat"
+    help_limit:*
+    flags:toolaction_GENERATE_SELECT | toolaction_IS_TEXT | toolaction_SHOW_TRANSIENT | toolaction_SHOW_AS_POP_UP
+    off_text:"+"
+    off_text_limit:*
+    on_text:""
+    on_text_limit:*
+    click_action:&0
+    select_show:"CrtChatMnu"
+    adjust_action:&0
+    adjust_show:""
+    fade_text:""
+    fade_text_limit:*
+  }
+}
+
+menu_object {
+  header_flags:
+  version:102
+  object_name:"InviteMenu"
+  menu_flags:
+  title:"Invite to group chat"
+  title_limit:*
+  help:""
+  help_limit:*
+  show_action:
+  hide_action:
+  Entry {
+    cmp:0
+    flags:
+    cmp:&0
+    text:"Menu Entry"
+    text_limit:*
+    click_object_name:""
+    sub_menu_object_name:""
+    sub_menu_action:&0
+    click_action:&0
+    help:""
+    help_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"UsersDialog"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:452,392,1548,1412
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Users"
+  window.title_text_limit:200
+  window.title_valid:""
+  button_object {
+    cmp:&2
+    bbox:12,-68,64,-16
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"search"
+    value_limit:8
+    validation:""
+    validation_limit:*
+  }
+  writablefield_object {
+    cmp:&3
+    bbox:72,-68,1076,-16
+    help_message:"Find the chat by title"
+    help_limit:*
+    flags:writablefield_GENERATE_USER_VALUE_CHANGED
+    text:""
+    text_limit:200
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:580,-992,808,-940
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:836,-1000,1076,-932
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"OK"
+    text_limit:13
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ManageGroup"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:452,470,1348,1494
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Manage group"
+  window.title_text_limit:200
+  window.title_valid:""
+  label_object {
+    cmp:&1
+    bbox:20,-68,124,-16
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Title"
+  }
+  writablefield_object {
+    cmp:&2
+    bbox:136,-68,876,-16
+    help_message:"Chat group title"
+    help_limit:*
+    flags:
+    text:""
+    text_limit:50
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:692,-1008,884,-940
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_LOCAL
+    text:"OK"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&5
+    bbox:24,-1000,336,-948
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Invite members"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&6
+    bbox:480,-1000,668,-948
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"logoutCnfrm"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:292,668,1360,940
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-284,1244,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Logout confirmation"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:8,-68,1060,-16
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Are you sure?"
+  }
+  label_object {
+    cmp:&1
+    bbox:16,-136,1060,-84
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Logout will remove current "Auto-login" authentication token."
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:324,-236,600,-176
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Yes, do logout"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:24,-236,300,-176
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"No, cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:624,-236,1040,-176
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Just quit from Chatcube"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:toolbox_OBJECT_SHARED
+  version:102
+  object_name:"ProfileInfo"
+  window_flags:window_GENERATE_ABOUT_TO_BE_SHOWN | window_AUTO_OPEN | window_AUTO_CLOSE | window_GENERATE_DIALOGUE_COMPLETED
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:208,912,1764,1452
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_WHITE
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1568,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Profile info"
+  window.title_text_limit:200
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:28,-328,340,-20
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"prof_empty"
+    value_limit:16
+    validation:""
+    validation_limit:*
+  }
+  label_object {
+    cmp:&11
+    bbox:372,-72,676,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"First name"
+  }
+  displayfield_object {
+    cmp:&12
+    bbox:700,-72,1540,-20
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&13
+    bbox:372,-132,680,-80
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Last name"
+  }
+  displayfield_object {
+    cmp:&14
+    bbox:700,-132,1540,-80
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&15
+    bbox:372,-192,680,-140
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Display name"
+  }
+  displayfield_object {
+    cmp:&16
+    bbox:700,-192,1540,-140
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&17
+    bbox:372,-256,680,-204
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"UserID"
+  }
+  displayfield_object {
+    cmp:&18
+    bbox:700,-252,1540,-200
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&19
+    bbox:372,-316,676,-264
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"City"
+  }
+  displayfield_object {
+    cmp:&1a
+    bbox:700,-312,1540,-260
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&1b
+    bbox:372,-372,676,-320
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Country"
+  }
+  displayfield_object {
+    cmp:&1c
+    bbox:700,-372,1540,-320
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  label_object {
+    cmp:&1d
+    bbox:376,-432,672,-380
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Web site"
+  }
+  displayfield_object {
+    cmp:&1e
+    bbox:696,-432,1540,-380
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:200
+  }
+  actionbutton_object {
+    cmp:&1f
+    bbox:1336,-520,1540,-452
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_CANCEL
+    text:"Close"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  button_object {
+    cmp:&20
+    bbox:32,-508,336,-336
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:""
+    value_limit:200
+    validation:"L"
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"screenshoot"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:"scrshootptr"
+  pointer_limit:12
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_WINDOW_FOCUS
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:32,240,1312,1264
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NO_BOUNDS | wimp_WINDOW_IGNORE_XEXTENT | wimp_WINDOW_IGNORE_YEXTENT | wimp_WINDOW_FURNITURE_WINDOW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_TRANSPARENT
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_TRANSPARENT
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-10240,12800,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:16,-120,452,-16
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_FILLED | wimp_ICON_INDIRECTED | wimp_ICON_ALLOW_ADJUST
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Click to make screenshoot of this window"
+    value_limit:*
+    validation:"L"
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"delAccCnfrm"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:292,740,1108,940
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-284,1244,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Delete account confirmation"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&0
+    bbox:32,-76,796,-24
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_HCENTRED
+    label:"Are you sure you want to DELETE YOUR ACCOUNT?"
+  }
+  actionbutton_object {
+    cmp:&2
+    bbox:384,-168,788,-108
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Yes, delete my account"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:24,-168,360,-108
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"No, cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"SearchTbar"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&201
+  hide_action:&202
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:684,1104,1968,1252
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-148,4000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:300
+  window.ymin:148
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  writablefield_object {
+    cmp:&1
+    bbox:228,-72,1008,-20
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:999
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&3
+    bbox:-1208,-1016,-1144,-952
+    help_message:"Send message"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"send_msg"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  adjuster_object {
+    cmp:&4
+    bbox:1028,-64,1060,-32
+    help_message:""
+    help_limit:*
+    flags:adjuster_INCREMENT | adjuster_VERTICAL
+    reserved:0
+  }
+  adjuster_object {
+    cmp:&5
+    bbox:1076,-60,1108,-28
+    help_message:""
+    help_limit:*
+    flags:adjuster_VERTICAL
+    reserved:0
+  }
+  actionbutton_object {
+    cmp:&6
+    bbox:1140,-68,1268,-16
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&1014
+  }
+  label_object {
+    cmp:&7
+    bbox:16,-72,212,-20
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Search for"
+  }
+  stringset_object {
+    cmp:&a
+    bbox:228,-136,600,-84
+    help_message:"Filter messages in current chat, can show only files or only messages with links or emails"
+    help_limit:*
+    flags:stringset_GENERATE_USER_VALUE_CHANGED
+    string_set:"All messages,Messages with links,Messages with emails,Photos and Files"
+    title:"Messages filter"
+    initial_selected_string:"All messages"
+    selected_string_limit:21
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  label_object {
+    cmp:&b
+    bbox:16,-132,212,-80
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX | label_RJUSTIFIED
+    label:"Search in"
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"ReplyTbar"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:&0
+  show_action:&201
+  hide_action:&202
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:696,1300,1980,1496
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-196,4000,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&0
+  window.xmin:300
+  window.ymin:196
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  writablefield_object {
+    cmp:&1
+    bbox:12,-184,1272,-132
+    help_message:""
+    help_limit:*
+    flags:
+    text:""
+    text_limit:999
+    allowable:""
+    allowable_limit:*
+    prev:toolbox_NULL_COMPONENT
+    next:toolbox_NULL_COMPONENT
+  }
+  button_object {
+    cmp:&3
+    bbox:-1208,-1016,-1144,-952
+    help_message:"Send message"
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_BORDER | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"send_msg"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+  displayfield_object {
+    cmp:&c
+    bbox:12,-60,1112,-12
+    help_message:""
+    help_limit:*
+    flags:
+    text:"Reply to: xxx"
+    text_limit:200
+  }
+  button_object {
+    cmp:&d
+    bbox:12,-120,1272,-72
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_TEXT | wimp_ICON_BORDER | wimp_ICON_FILLED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_LIGHT_BLUE
+    value:"Reply text"
+    value_limit:200
+    validation:""
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&e
+    bbox:1124,-60,1272,-12
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_LOCAL
+    text:"Cancel"
+    text_limit:100
+    click_show:""
+    action:&1012
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"MsgsDown"
+  window_flags:
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:&0
+  hide_action:&0
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:500,1180,580,1256
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_WHITE
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_WHITE
+  window.work_bg:wimp_COLOUR_WHITE
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-76,80,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:wimp_BUTTON_ALWAYS | wimp_BUTTON_REPEAT
+  window.sprite_area:&0
+  window.xmin:12
+  window.ymin:12
+  window.title_text:""
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&1
+    bbox:0,-76,80,0
+    help_message:""
+    help_limit:*
+    flags:button_TASK_SPRITE_AREA
+    button_flags:wimp_ICON_SPRITE | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED | wimp_BUTTON_CLICK
+    button_esg:0
+    button_fg:wimp_COLOUR_WHITE
+    button_bg:wimp_COLOUR_WHITE
+    value:"arr_down_c"
+    value_limit:*
+    validation:""
+    validation_limit:*
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"FeedbackWin"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:460,816,1740,1356
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1280,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Submit Feedack"
+  window.title_text_limit:*
+  window.title_valid:""
+  button_object {
+    cmp:&0
+    bbox:16,-440,1264,-352
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"Note: The feedack function will take a screenshoot of the application window at submit"
+    value_limit:*
+    validation:"L40"
+    validation_limit:*
+  }
+  textarea_object {
+    cmp:&1
+    bbox:16,-336,1264,-68
+    help_message:""
+    help_limit:*
+    flags:
+    type:0
+    event:0
+    text:""
+    foreground:os_COLOUR_BLACK
+    background:os_COLOUR_WHITE
+  }
+  label_object {
+    cmp:&2
+    bbox:16,-60,972,-8
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Type the description  of the problem here"
+  }
+  actionbutton_object {
+    cmp:&3
+    bbox:24,-516,212,-464
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_CANCEL
+    text:"Cancel"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+  actionbutton_object {
+    cmp:&4
+    bbox:1056,-520,1260,-452
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT
+    text:"Submit"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}
+
+window_object {
+  header_flags:
+  version:102
+  object_name:"CreditsWin"
+  window_flags:window_AUTO_OPEN | window_AUTO_CLOSE
+  help_message:""
+  help_limit:*
+  sprite_name:""
+  pointer_limit:0
+  hotspot:0,0
+  menu_name:""
+  default_focus:toolbox_NULL_COMPONENT
+  show_action:
+  hide_action:
+  toolbar_ibl:""
+  toolbar_itl:""
+  toolbar_ebl:""
+  toolbar_etl:""
+  window.visible:460,500,1820,1336
+  window.xscroll:0
+  window.yscroll:0
+  window.next:wimp_TOP
+  window.flags:wimp_WINDOW_MOVEABLE | wimp_WINDOW_AUTO_REDRAW | wimp_WINDOW_BACK_ICON | wimp_WINDOW_CLOSE_ICON | wimp_WINDOW_TITLE_ICON | wimp_WINDOW_SIZE_ICON | wimp_WINDOW_NEW_FORMAT
+  window.title_fg:wimp_COLOUR_BLACK
+  window.title_bg:wimp_COLOUR_LIGHT_GREY
+  window.work_fg:wimp_COLOUR_BLACK
+  window.work_bg:wimp_COLOUR_VERY_LIGHT_GREY
+  window.scroll_outer:wimp_COLOUR_MID_LIGHT_GREY
+  window.scroll_inner:wimp_COLOUR_VERY_LIGHT_GREY
+  window.highlight_bg:wimp_COLOUR_CREAM
+  window.extra_flags:
+  window.extent:0,-1024,1500,0
+  window.title_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+  window.work_flags:
+  window.sprite_area:&ffffffff
+  window.xmin:100
+  window.ymin:100
+  window.title_text:"Credits"
+  window.title_text_limit:*
+  window.title_valid:""
+  label_object {
+    cmp:&a
+    bbox:12,-68,868,-16
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"ChatCube is powered by following open source software:"
+  }
+  label_object {
+    cmp:&b
+    bbox:44,-172,1280,-120
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"libcurl by Daniel Stenberg <daniel@haxx.se> and many contributors, https://curl.se/libcurl/"
+  }
+  label_object {
+    cmp:&c
+    bbox:44,-120,1288,-68
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"TBX by Alan Buckley, https://sites.google.com/site/alansriscosstuff/tbx"
+  }
+  label_object {
+    cmp:&d
+    bbox:44,-324,1460,-272
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"rufl by James Bursa <james@semichrome.net>, https://www.netsurf-browser.org/projects/rufl/"
+  }
+  label_object {
+    cmp:&e
+    bbox:44,-476,1500,-424
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"InfoZip by InfoZip team, http://infozip.sourceforge.net/"
+  }
+  label_object {
+    cmp:&f
+    bbox:44,-276,1328,-224
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"OSLib by Jonathan Coxhead and OSLib team, https://ro-oslib.sourceforge.io/contact.html"
+  }
+  label_object {
+    cmp:&10
+    bbox:44,-372,1448,-320
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"libjpeg by Tom Lane and libjpeg team, http://libjpeg.sourceforge.net/"
+  }
+  label_object {
+    cmp:&11
+    bbox:44,-424,1500,-372
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"libpng by libpng team, http://www.libpng.org/pub/png/libpng.html"
+  }
+  label_object {
+    cmp:&12
+    bbox:44,-524,1484,-472
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"cJSON by Dave Gamble and maintainers, https://github.com/DaveGamble/cJSON"
+  }
+  label_object {
+    cmp:&13
+    bbox:44,-224,1496,-172
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"OpenSSL by OpenSSL Software Foundation, https://www.openssl.org/"
+  }
+  label_object {
+    cmp:&14
+    bbox:44,-572,1328,-520
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"Symbola Font by George Douros, https://dn-works.com/ufas/"
+  }
+  label_object {
+    cmp:&15
+    bbox:44,-620,1500,-568
+    help_message:""
+    help_limit:*
+    flags:label_NO_BOX
+    label:"DejaVu Fonts by DejaVu fonts team, https://dejavu-fonts.github.io/"
+  }
+  button_object {
+    cmp:&17
+    bbox:16,-736,1316,-632
+    help_message:""
+    help_limit:*
+    flags:
+    button_flags:wimp_ICON_TEXT | wimp_ICON_HCENTRED | wimp_ICON_VCENTRED | wimp_ICON_INDIRECTED
+    button_esg:0
+    button_fg:wimp_COLOUR_BLACK
+    button_bg:wimp_COLOUR_WHITE
+    value:"A licenses for the used open source software and fonts can be found in the "license" directory of the ChatCube software"
+    value_limit:*
+    validation:"L40"
+    validation_limit:*
+  }
+  actionbutton_object {
+    cmp:&18
+    bbox:572,-820,776,-752
+    help_message:""
+    help_limit:*
+    flags:actionbutton_IS_DEFAULT | actionbutton_IS_CANCEL
+    text:"Close"
+    text_limit:*
+    click_show:""
+    action:&0
+  }
+}

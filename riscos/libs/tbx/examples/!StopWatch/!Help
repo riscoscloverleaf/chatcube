@@ -1,0 +1,11 @@
+Simple example TBX application to show how to use a timer.
+
+Running the application puts an icon on the iconbar.
+
+The iconbar menu gives two options.
+- show the application information
+- quit the application
+
+Clicking select on the iconbar shows the "StopWatch" window.
+
+The window consists of a display field that shows the current time on the stop watch and a button to start and stop the stopwatch.

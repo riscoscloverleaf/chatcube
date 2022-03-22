@@ -1,0 +1,14 @@
+pythonenv/
+*.po.bak
+*.bak
+*.pyc
+*.mo
+.idea/
+prod/
+test/
+log/
+devel/locale/
+devel/www/
+devel/settings/local_*
+riscos/cmake-build-debug/
+.DS_Store

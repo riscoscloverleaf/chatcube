@@ -1,0 +1,22 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Idle events and timers</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch05.html" title="Chapter 5. The TBX event system"><link rel="prev" href="ch05s05.html" title="WIMP application messages"><link rel="next" href="ch06.html" title="Chapter 6. Utility classes and functions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Idle events and timers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a> </td><th width="60%" align="center">Chapter 5. The TBX event system</th><td width="20%" align="right"> <a accesskey="n" href="ch06.html">Next</a></td></tr></table><hr></div><div class="section" title="Idle events and timers"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36099187"></a>Idle events and timers</h2></div></div></div><p>
+      If you need to go some processing when the nothing else is
+      happening in the WIMP you can add or remove a <code class="classname">tbx:Command</code>
+      derived class to the <code class="classname">tbx::Application</code> class with
+      the <code class="methodname">add_idle_command</code> and <code class="methodname">remove_idle_command</code>
+      methods.
+    </p><p>
+      You may also only wish to do this action after a set amount of time. In this case
+      you add a <code class="classname">tbx::Timer</code> derived class to the
+      <code class="classname">tbx::Application</code> class using the <code class="methodname">add_timer</code>
+      method giving it the interval between calls. To stop the timer call the <code class="methodname">remove_timer</code>
+      method on the <code class="classname">tbx::Application</code> class.
+      Timers are only processed when there are no other events so they will not
+      necessarily be delivered exactly on time.
+    </p><p>
+      With both idle events and timers it is important that you remove them from
+      the application when they are not required as it improves overall system
+      performance.
+    </p><p>
+      The TBX-Examples download contains an application called !StopWatch which
+      demonstrates the use of a timer.
+    </p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">WIMP application messages </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 6. Utility classes and functions</td></tr></table></div></body></html>

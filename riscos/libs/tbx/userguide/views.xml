@@ -1,0 +1,130 @@
+<chapter>
+<title>View classes</title>
+<para>
+The view classes are provided in the <package>tbx::view</package> namespace
+are provided to help show data in a window.
+</para>
+  <para>
+    There is a <classname>tbx::view::TextView</classname> class to display text, but the majority of the
+    classes are derived from the <classname>tbx::view::ItemView</classname> class to provide display
+    and mouse click handling for formatted lists of items.
+  </para>
+  <para>
+    If text or a list just needs to fit in a fixed space on a form then it is
+    worth considering using the TextArea or ScrollList gadgets instead.
+  </para>
+  <para>
+    The <classname>TextView</classname> class provides a simple way to display
+    text. You can set if you want it to wrap and either set the text from
+    in memory data or get it to load it from a file.
+  </para>
+  <section>
+    <title>Item views</title>
+    <para>
+      There are item view class to provide a simple list, a multi column list
+      or a view full of items wrapped from left to right.
+    </para>
+    <para>
+      All item views can have a margin around the outside and paint there content
+      using classes derived from <classname>tbx::view::ItemRenderer</classname>.
+      Selection of items in the views is handled by classes derived from
+      <classname>tbx::Selection</classname>.
+      They all provide methods to allow the sizes of items to be specified or automatically
+      calculated as items are added or removed.
+    </para>
+    <para>
+      TBX already has selection classes that can be used for single and multiple
+      selection types that are most commonly seen on RISC OS.
+    </para>
+    <para>
+      TBX provides classes and templated classes derived from the <classname>ItemRenderer</classname>
+      class which simplify the rendering. With these you need to derive from them and give them
+      the data to be rendered. Included are classes to render text in the desktop font
+      and render sprites.
+    </para>
+    <para>
+      Below the <classname>ItemRenderer</classname> class is the <classname>TypedItemRenderer</classname>
+      template which renders data of a specific type. The other provided renderers are derived from
+      this. The <classname>TypedItemRenderer</classname> template requires a <classname>ItemViewValue</classname>
+      class passed to its constructor to provide the value for it to render.
+    </para>
+    <para>
+      Mouse click handling is simplified as the ItemView has a click handler which
+      returns the item that was clicked upon in the event information.      
+    </para>
+    <example>
+      <title>A simple class to render a vector of strings in a window</title>
+      <para>The header file.</para>
+      <programlisting>
+class StringListView
+{
+   std::vector&lt;std::string&gt; _lines;
+
+   tbx::view::IndexItemViewValue&lt; std::string, std::vector&lt;std::string&gt; &gt; _item_value;
+	 tbx::view::WimpFontItemRenderer _line_renderer;
+	 tbx::view::ListView _view;
+
+public:
+	StringListView(tbx::Window window);
+
+	void clear();
+	void push_back(std::string value);
+	void pop_back();
+
+	std::string line(int index) {return _lines[index];}
+	void line(int index, std::string new_value);
+}
+      </programlisting>
+      <para>The implementation file</para>
+      <programlisting>
+#include "StringListView.h"
+
+StringListView::StringListView(tbx::Window window) :
+  _item_value(_lines),
+  _line_renderer(&amp;_item_value),
+  _view(window, &amp;_line_renderer)
+{
+}
+
+/**
+* Clear the whole list
+*/
+void StringListView::clear()
+{
+  _lines.clear();
+  _view.cleared();
+}
+
+/**
+* Add line to end of view
+*/
+void StringListView::push_back(std::string value)
+{
+  _lines.push_back(value);
+  _view.inserted(_lines.size()-1, 1);
+}
+
+/**
+* Remove line from end of view
+*/
+void StringListView::pop_back()
+{
+  _view.removing(_lines.size()-1,1);
+  _lines.pop_back();
+  _view.removed(_lines.size(), 1);
+}
+
+/**
+* Replace a line
+*/
+void StringListView::line(int index, std::string new_value)
+{
+  _view.changing(index, 1);
+  _lines[index] = new_value;
+  _view.changed(index, 1);
+}
+      </programlisting>     
+    </example>
+  </section>
+
+</chapter>

@@ -1,0 +1,15 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Gadgets</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch04.html" title="Chapter 4. The core TBX classes"><link rel="prev" href="ch04s03.html" title="Menu items"><link rel="next" href="ch05.html" title="Chapter 5. The TBX event system"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Gadgets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><th width="60%" align="center">Chapter 4. The core TBX classes</th><td width="20%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr></table><hr></div><div class="section" title="Gadgets"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36098972"></a>Gadgets</h2></div></div></div><p>
+Gadgets are retrieved using the <code class="classname">Window</code> class <code class="function">gadget</code> method.
+</p><p>
+ This returns a generic <code class="classname">Gadget</code> C++ class instance. If anything but the most
+ generic of methods or properties are used it then needs to be cast to the subclass of Gadget for
+ the type of gadget retrieved.
+</p><div class="example"><a name="id36098993"></a><p class="title"><b>Example 4.6. Getting a WritableField from a window</b></p><div class="example-contents"><pre class="programlisting">
+ // main_window is a tbx::Window
+ tbx::WritableField name_field = main_window.gadget(1);
+ name_field.text("Hi there"); // Update the fields text
+</pre></div></div><br class="example-break"><p>
+ Like the <code class="classname">Object</code> class, the <code class="classname">Gadget</code> can sometimes be
+ in a state where it does not refer to a gadget. To check for this call the <code class="function">null()</code>
+ method.
+</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Menu items </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. The TBX event system</td></tr></table></div></body></html>

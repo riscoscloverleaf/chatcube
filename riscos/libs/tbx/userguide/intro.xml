@@ -1,0 +1,34 @@
+<chapter id="intro">
+
+<title>Introduction</title>
+
+
+<section>
+<title>Introduction</title>
+<para>
+ TBX is a C++ library to help write desktop programs for RISC OS.
+ At its core level it interfaces with the RISC OS toolbox which provides objects
+ to show windows/gadgets and standard dialogue boxes.
+</para>
+<para>
+ As well as this core level it provides other classes to help in the
+ creation of fully featured applications.
+</para>
+<para>
+ It is released under the MIT licence that allows it to be used
+ with open and closed source applications freely.
+</para>
+</section>
+
+<section>
+<title>Requirements</title>
+<para>
+TBX requires the GCC4.1 RISC OS compiler or later. To create/edit the toolbox resources you will need ResEdit or CCRes.
+</para>
+<para>The machine that builds a tbx program will need long filename support. The final applications can be theoretically run on a machine with RISC OS 3.1 onwards though some features may not work in such a case, but is tested and developed using RISC OS 4 and 5.
+</para>
+</section>
+
+
+
+</chapter>

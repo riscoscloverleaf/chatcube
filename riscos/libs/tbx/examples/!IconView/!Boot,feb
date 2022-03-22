@@ -1,0 +1,4 @@
+| Boot file for IconView example
+
+Set IconView$Dir <Obey$Dir>
+IconSprites <IconView$Dir>.!Sprites

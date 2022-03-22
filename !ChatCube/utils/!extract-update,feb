@@ -1,0 +1,2 @@
+WimpSlot -min 746k
+<Obey$Dir>.unzip <ChatCube$ChoicesDir>.ChatCube-update/zip -d <ChatCube$Dir>.update { > null }

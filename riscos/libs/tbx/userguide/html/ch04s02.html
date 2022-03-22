@@ -1,0 +1,66 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Toolbox objects</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch04.html" title="Chapter 4. The core TBX classes"><link rel="prev" href="ch04.html" title="Chapter 4. The core TBX classes"><link rel="next" href="ch04s03.html" title="Menu items"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Toolbox objects</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><th width="60%" align="center">Chapter 4. The core TBX classes</th><td width="20%" align="right"> <a accesskey="n" href="ch04s03.html">Next</a></td></tr></table><hr></div><div class="section" title="Toolbox objects"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36098859"></a>Toolbox objects</h2></div></div></div><p>
+The tbx library provides a light wrapper around the Toolbox objects,
+gadgets and menu items.
+</p><p>
+ The classes to manipulate the toolbox objects can be treated as
+ references to the underlying toolbox object.
+</p><p>
+ Copying the C++ classes does not make a copy of the object, rather it
+ copies the reference so both classes refer to the same object.
+</p><div class="example"><a name="id36098876"></a><p class="title"><b>Example 4.2. Multiple C++ instances refer to one Toolbox object</b></p><div class="example-contents"><pre class="programlisting">
+tbx::Window w1("Window"); // Creates a C++ class instance and the underlying toolbox object
+tbx::Window w2 = w1;      // Creates a new C++ class instance, but refers to the same toolbox object
+
+w1.title("New Title");        // Changes "Window" toolbox items title to "New Title"
+w2.title("Even newer title"); // "Window" toolbox item title has been changed again
+</pre></div></div><br class="example-break"><p>
+ Any toolbox object can be represented by the <code class="classname">Object</code> class.
+ To manipulate it using the properties and methods for that specific class you need
+ to first copy it into a class derived from it. At the point of the copy the toolbox
+ object class type is checked to ensure the C++ class it is copied to is correct and
+ an exception is thrown if it is not.
+</p><p>
+ In some cases you will be returned a C++ class instance that is not
+ currently assosiated with a toolbox object. To determine if a C++
+ class instance does not reference a toolbox object call the <code class="function">null()</code>
+ method on the object class.
+</p><p>
+ To associate a toolbox class with a C++ class you can either create
+ the toolbox class from the C++ class by using the constructor that
+ takes a template name, use the set_autocreate_listener on the
+ Application class which will be triggered when an object is auto-created
+ by the toolbox, or get it from a property or method of another toolbox
+ object that returns an object.
+</p><div class="example"><a name="id36098916"></a><p class="title"><b>Example 4.3. Creating a toolbox object in code</b></p><div class="example-contents"><pre class="programlisting">
+// Create the toolbox object named "Window" defined in the "Res" file.
+tbx::Window main_window("Window");
+</pre></div></div><br class="example-break"><div class="example"><a name="id36098923"></a><p class="title"><b>Example 4.4. Getting a reference to a toolbox object when it is autocreated</b></p><div class="example-contents"><pre class="programlisting">
+// Class to get reference to toolbox object
+class GetMainWindow : tbx::AutoCreateListener
+{
+public:
+  // Subroutine called when object is auto created
+  virtual void auto_created( std::string template_name,  tbx::Object object)
+  {
+     tbx::Window main_window(object); // main_window now refers to the object created
+     // Do stuff with main_window
+     ...
+  }        
+};
+
+// Code fragment from main setting up the listener for toolbox object "Window"
+GetMainWindow get_main_window;
+test_app.set_autocreate_listener("Window", &amp;get_main_window);
+</pre></div></div><br class="example-break"><div class="example"><a name="id36098939"></a><p class="title"><b>Example 4.5. Getting a reference toolbox object from another toolbox object</b></p><div class="example-contents"><pre class="programlisting">
+// main_window is a tbx::Window instance
+tbx::Menu main_menu = main_window.menu();
+</pre></div></div><br class="example-break"><p>
+ To detect when a toolbox object is deleted automatically you can add a listener for the
+ has been deleted event. If the toolbox does not delete the object automatically you can
+ delete the toolbox object from the C++ class instance by calling the delete_object method.
+</p><p>
+ A MatchLifetime templated class provides a convenient way to match
+ the life time of a C++ class instance with a toolbox object. If its constructor
+ is provided with a template name it will automatically add the above
+ listeners for you.
+</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 4. The core TBX classes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Menu items</td></tr></table></div></body></html>

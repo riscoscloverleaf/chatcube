@@ -1,0 +1,252 @@
+1.31
+Implemented scrolling the chats list to the top if chats ordering set to "Last message" and got a new message.
+Implemented checking if ChatCube is already running and prevent starting multiple instances.
+Fixed bug with sending files with space in the name (it was shown '?' instead of ' ')
+Changed UTF-8<->RiscOS charset encoding functions. Stop using iconv and predefined set of encodings. Now get the current alphabet and use xserviceinternational_get_ucs_conversion_table to get Unicode<->local conversion table.
+Fixed bug with switching to the other chat when the currently selected chat is not loaded yet. Now it should automatically reload messages from the newly selected chat.
+The help file for ChatCube now can be located as !help.pdf in the ChatCube directory.
+Set "Force on screen" option to main window to keep it always on the screen.
+
+1.30
+Implemented drag & drop to upload directly from other applications
+Bugs fixed: 
+Don't show "Private chat" option if already in private chat
+Don't show initial connection progress bar if option "Start hidden" is turned on in the "Choices"
+
+
+1.29
+Implemented "I agree to receive newsletters by email" registration option.
+Improve startup progress bar.
+A licenses for the used open source software and fonts are placed in the "license" directory of the ChatCube software.
+
+1.28
+Implemented videos download and thumbnail display from Telegram
+Fixed break layout at maximize window
+Fixed display and show uploaded sprites
+Fixed wrong "online" status of member in the Forward window
+Fixed "Downloading attachment" progress bar
+Fixed "Downloading avatars and stickers" progress bar (don't show if no new images)
+Fixed load more messages when scrolling to top without scroll to bottom and back to the top.
+Added "website" field in the member's profile.
+Display info dialog for app loading stages: "Connecting..", "Loading initial data", "Loading my profile" and "Loading chats list" which can take some time to load.
+Display "rufl" initialization progress bar.
+Implemented "Credits" info dialog.
+Implemented "Copy to Clipboard" message menu item to copy message text to clipboard.
+
+1.27
+Implemented the "search" function. Messages will be searched from newer to older (from bottom to top). If a matched message is not found in the currently loaded chat messages then the "search" request will be sent to the server.As Chatcube messages are encrypted in the database then in the big chat groups it can take some time to find a message because it needs to decrypt every message. The search in the Telegram is using the Telegram search API.The server will send back the first found message with some older and newer message around the found message. The server will not search for all messages and does not count of possible found messages as it can take much more time. There are the arrows "up" and "down" in the interface which move to next or previous found message, the keyboard keys "up"/"down" can be used also. If no more messages are found then alert "Messages not found" will be displayed.Current found message marked by different color and found substring also marked by yellow background in all displayed messages (not only in currently found).The messages filters "Messages with links","Messages with emails","Photos and Files" moved from the main toolbar to the search toolbar and become part of search. You can leave the input search text empty and select only filter or can enter the search text and then it will find messages by filter which MUST INCLUDE search text.The "search mode" is activated by click on the search icon at the right side of the main input toolbar.
+Implemented button "go bottom" with down arrow icon which will scroll the history to the bottom. As RISCOS does not allow non-rectangular windows then the button subwindow is rectangular... I tried to set the transparent background color but it does not work as expected.When you have a chat group with many unread messages then it will load only first unread messages instead going to the end of history. You can scroll down manually and chat will load more newer messages automatically, the same as when you scroll up. The button with down arrow can be used to go to the end of chat history.
+Implemented "Delete my account" option. The button is located in the "Choices"->"Chatcube chat"
+Implemented ability to drag text from other applications to Chatcube to paste in the input line (tested with NetSurf). Fixed bug with "<Wimp$Scrap>" handling and crashing Chatcube after drag link from NetSurf to Chatcube.
+Implemented "Download history" option. Option located in the chat menu. It will download the whole chat history to your computer in the HTML format. Files and photos are not downloaded but HTML output have links pointed to the server. This function works only for ChatCube chats because for Telegram we do not store the history on the server. 
+Attempt to fix the "Input focus window not found" error.
+
+1.26
+Fixed bug with empty "last message" in the chats list.
+Fixed bug with handling of the "start hidden" option.
+Update "last message" instantly after sending (without waiting server response).
+Implemented display small scaled sticker or image in the "last message" if message is sticker or image without text.
+
+1.25
+Implemented horizontal Chat window resizing. Now it can fit in the 800x600 resolution and can be expanded at bigger resolutions. Size and position of the window will be saved automatically and restored on the next launch. 
+Fixed wrong "last online time" in the "Forward" dialog
+Fixed problem with input focus in the "Search" top toolbar
+
+1.24
+Fixed "Sprite not found" error happens when system sprite for some attached file type is not found.
+
+1.23
+Increase quality of compressed screenshoot JPG from 60 to 75
+Changed colors of online/offline indicator
+Reduced font size of replied text
+Implemented screenshoot of the window. Just point the mouse to the required window. The screenshoot taken from visible screen using windows dimensions so if the window is covered by another window then part of another window will be saved in the screenshoot. Needs to bring window to front manually before take screenshoot.
+Fixed problem when messages scrolled up and "unread" counter not incremented on new incoming message.
+Download images and save to downloads when select the "Download" message's menu item. Open image via "Filer_Run" on double-click. Previously images always opened via "Filer_Run"
+Added "Downloads" menu item in the Iconbar menu which open "Downloads" directory.
+
+1.22
+Fixed bug when input message toolbar become hidden when resize the main Chat window.
+Fixed bug with opened fonts after exit (i hope :).
+
+1.21
+Multiline TextArea seems buggy, does not send message on Enter, reverted back to WritableField.
+Display online status and last online time of member in the "Profile" dialog.
+
+1.20
+Implemented Reply function. Reply called from the message menu. In the Reply mode some additional info will be displayed: member's name, part of original message (on blue background) and Cancel reply button.
+Implement display of replies and forwarded messages similar way as in Telegram. 
+Implemented autoresizing TextArea as input message control. Message sent by Enter key as before, if you need to insert new line then use Ctrl-Enter or Shift-Enter. New input control may be a little buggy because TextArea does not provide useful info about internals and some hacks used to detect required gadget size. Hope it will work well. Known issue: when you erase some text then the area will not shrink automatically. It will shrink only when the message is completely erased (empty).
+Implemented automatic Inactive member's status. Yellow circle instead of green used for indication of this mode. Inactive status means member have running chat and online but not send any requests and the last request was sent more than 4 minute ago.
+Implemented scroll to first unread message instead scrolling to the end of history when opening a chat. Note: loaded up to 100 last unread messages. If you have more unread messages then chat will load only 100 latest and previous messages will be marked as "read". This limit should prevent a ban of our server by Telegram (due too many requests) and reduce load on the server.
+Fixed hourglass when the chat window is hidden, in this case hourglass will hide and not display.
+
+1.19
+Implemented thumbnails for the uploaded sprites (file type 0xff9).
+Implemented send email notification for unread messages and then configuration option for it. Configuration located at the "General" section of the "Settings".
+Fixed bug with automatic update.
+
+1.18
+Implemented profile info dialog. Click on the profile icon in the messages of select "View profile" menu entry in the private chat menu.
+In the profile info the big profile photo opened by clicking on the photo's thumbnail.
+Optimized layout of messages to fit more information. Reduced margins, increased text message box width. Show member's name on the top line of the message in group chat (in green color). Removed member's name from avatar box.
+Set "Accept-encoding" header for all download requests to enable compression for some content types, compression setting also configured at server and exclude compression for already compressed files.
+Added button "Just quit from Chatcube" in the logout confirmation dialog.
+
+1.17
+Reimplementation of automatic update. Hope will run well.
+Implemented logout confirmation dialog
+Changed sort ordering in the "Forward message" dialog. Will sorted by "Last message" then by "Chat title"
+Changed sort ordering of the "Online" sort mode. Sort by "Online" then by "Last message" then by "Chat title"
+
+1.16
+Implemented forward messages between different messengers. If a message forwarded to the same messengers then used an internal messenger's "forward" function. If a message forwarded to different messengers them message content copied and only messages of types text, photo, file can be forwarded this way, stickers or other message types can't be forwarded between different messengers.
+Fix for Wimp sprites bug. Icons which used in the Iconbar seems must be present in the system aprite area. Put all icons used in the IconBar to the !Sprite which is then loaded with IconSprites command.
+
+1.15
+Fix Wimp sprite area. Do load only a single app icon into the Wimp sprite area using IconSprites command. All other app sprites moved to Sprites and loaded into the application sprite area.
+
+1.14
+Finally fixed bug with duplicate outgoing messages. Strip whitespace only at end of message. Don't send empty messages with spaces only.
+
+1.13
+Fixed bug with duplicate outgoing messages
+
+1.12
+Fixed bug with ESC key in the dialogs with members list (Forward Message, Create New Chat, Invite members)
+
+1.11
+Removed online marker (red circle) from the chat groups in the chats list. Groups can't be online or offline as some members can be online and some offline.
+Change the color of the "edited" marker in the message to red.
+
+1.10
+Added "+" button on the top chatlist toolbar to create new chat.
+Added quick filter in the "Forward message" dialog.
+ 
+1.09
+Implemented typing notify. The text "typing..." will be shown on the chats list instead of the last message text.
+Implemented different chats list ordering (by online, by last message date, by chat title)
+Implemented search for the chat. Search filter applied immediately to chats list.
+Implemented automatic application update. Press the "Update" button in the "Settings->Version" and chat will be updated to the latest version. After updating previous version will be stored at "!Chatcube.update" directory. You can revert it back manually if needs.
+Implemented "Manage group", now can only change title and look at the group member list
+Implemented "Invite members" in group. Button "Invite members" in the "Manage group" dialog.
+Implemented "Edit message" feature. Editing can be canceled also without changes.
+Implemented "Start hidden" option.
+
+1.08
+Fixed bug with duplicate messages when sending stickers.
+Implemented Sound notification. Sounds stored in MP3 files and played using AMPlayer module from DigitalCD. May needs to install module from !System subdirectory in the ChatCube. Sounds turned on/off in the Settings -> Notification
+
+1.07
+Fixed problem with possible hangs when no Internet connection. It is caused by CURL hostname resolving as it is still blocking.
+Implemented save and cache resolved addresses to avoid DNS resolving.
+
+1.06
+Fixed duplicate messages when sent to Telegram
+
+1.05
+Fixed problem with network connection (caused by changings at Cloudflare)!
+Display error message when directory dragged into chat instead of ignoring. Chat can send only files.
+
+1.04
+Fixed download function
+Fixed progress bar indication when downloading text files
+Fixed progress bar for uploads
+
+1.03
+Fixed Screenshoot function.
+Fixed error when directory dragged on chat. As we can't attach directories then it will ignored instead of error.
+Implemented show progress bar for long running operations in addition to hourglass percent show.
+Implemented "forward message" function. It works by middle-button click on the message and select "Forward" from menu. Message can be forwarded to multiple recipients. The files and photos can be forwarded also.
+Implemented support of two-factor (password protected) Telegram authorization.
+Implemented unregister (unbind) Telegram account from ChatCube account. Button "Unregister Telegram account" located in the "Settings".
+
+1.02
+Change place where to write cache and downloaded files. Now write to <Choices$Write>.ChatCube First start of this version may take significant time because needs to load avatars and stickers into new directory.
+Implemented show chat window on new message if chat window was hidden. This option configured in the Settings.
+
+1.01
+Fixed problem with caching error responses in files download. Now if you select to download the file it will always loaded from server.
+Fixed problem with UTF8 in the profile fields in the Edit Settings dialog.
+Decreased connection timeout from 30 to 5 seconds. Hope it helps with faster reconnection and resubmit timed out request.
+
+1.00
+Fixed some errors at first Telegram account registration.
+Fixed "Telegram Client not started" error sometimes happens at start
+Fixed logout and next login under different account (events was come to previous account).
+If Telegram account is not added yet then not allow to edit its data in the Edit Settings but offer to add Telegram account.
+Fixed "Add messenger -> Telegram" menu item
+
+0.99
+Implemented reconnection and retry requests on network failures.
+The icon in the iconbar will be gray if no connection to server.
+Fixed Regsitration dialog errors.
+Changed attachments download, now it will download file to "downloads" folder in !CatCube and open folder when download finished.
+
+0.97 
+Greatly reduced CPU load
+Fixed chatlist ordering
+
+0.95
+Rewrite 90% of code.
+Improved rendering speed at least in 10x times
+Icons for different messengers
+
+
+0.81
+instant chat update on send message
+implement edit settings
+use system file type icons to display attachment icons
+show confirmation on send screenshots
+
+0.80
+change to open files on double click
+fix app hangs during files downloading in case of network problems
+fix file save as function when file previously opened
+
+0.79
+load more messages on scroll
+
+0.78
+remove background for stickers in the chat
+fix segfault crash on sending messages
+show hourglass at initial data loading
+
+0.77
+fix filenames when sending files
+show big profile photo when click to avatar
+fix bug with saving files
+
+0.76
+add icons for some popular file types
+allow download attachments of all types
+fix resize chat list bug on maximizing window
+save login info to !Boot.Choices folder
+
+0.75
+add stickers
+remove phone field from reset password form
+fix segfault crash on opening attached images
+
+0.71
+fix displaying unread messages count
+change cursor on hover clickable objects
+show date in messages history
+add possibility to receive and show broadcast alerts from server
+minor bug fixes
+
+0.7
+fix displaying of groupchats
+fixes for chatlist displaying when new messages received
+window layout was changed
+add mouse scroll support
+
+0.61
+small improvements and bug fixes
+
+0.6
+Add UTF-8 support.
+Handle network connection problems.
+Edit profile feature.
+
+0.0.2
+Add possibility to change the profile picture or select from predefined avatars

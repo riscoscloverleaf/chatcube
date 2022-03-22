@@ -1,0 +1,9 @@
+The user guide is generated from the xml files in this
+directory into the html subfolder.
+Images for the guide are already in html/images.
+
+The guide is generated using docbook. As there isn't
+a current RISC OS version of xsltproc this has to
+be done on another machine.
+
+The shell script generate.sh does it on cygwin.

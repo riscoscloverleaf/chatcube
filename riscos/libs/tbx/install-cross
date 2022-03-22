@@ -1,0 +1,33 @@
+# /bin/bash
+# Copies the headers a library after a cross compile to the
+# GCCSDK_INSTALL_ENV directory used by the GCCSDK autobuilder
+# If GCCSDK_INSTALL_ENV is not permanently set you can run
+# it with:
+#   ~/gccsdk/env/ro-path ./install-cross
+# where ~/gccsdk/env is replaced with the location you installed
+# the cross compiler to
+
+if [ -z "$GCCSDK_INSTALL_ENV" ] ; then
+   echo "GCCSDK_INSTALL_ENV is not defined"
+   exit 1
+fi
+
+TBX_INCLUDE=$GCCSDK_INSTALL_ENV/include/tbx
+
+mkdir -p $TBX_INCLUDE
+mkdir -p $TBX_INCLUDE/doc
+mkdir -p $TBX_INCLUDE/ext
+mkdir -p $TBX_INCLUDE/res
+mkdir -p $TBX_INCLUDE/view
+
+echo "Copying headers..."
+cp -fr tbx/*.h $TBX_INCLUDE
+cp -fr tbx/doc/*.h $TBX_INCLUDE/doc
+cp -fr tbx/ext/*.h $TBX_INCLUDE/ext
+cp -fr tbx/res/*.h $TBX_INCLUDE/res
+cp -fr tbx/view/*.h $TBX_INCLUDE/view
+
+echo "Copying library..."
+cp -f libtbx.a $GCCSDK_INSTALL_ENV/lib
+
+echo "TBX installed in $GCCSDK_INSTALL_ENV"

@@ -1,0 +1,28 @@
+{% load i18n iktags static %}<!DOCTYPE html>
+<html>
+<head>
+<title>ChatCube</title>
+<style type="text/css">
+a, a:link, a:hover, a:visited {font-family: Trebuchet ms, Verdana, Arial, Helvetica, sans-serif; font-size: 14px;}
+td,body,p {font-family: Trebuchet ms, Verdana, Arial, Helvetica, sans-serif; font-size: 14px;}
+.nowrap { white-space: nowrap; }
+</style>
+{% block extstyle %}
+{% endblock %}
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td align="center">
+<table border="0" cellpadding="10" cellspacing="0" width="600">
+    <tr><td valign="top" align="center">{% block top %}<img src="{% absolute_static "ik/chatcube-logo.jpg" %}" alt="logo">{% endblock %}</td></tr>
+    <tr><td valign="top" align="center">{% block content %}{% endblock %}</td></tr>
+    <tr><td valign="top" align="center">{% block footer %}
+    <em>Copyright © {% now "Y" %} <a href="https://riscoscloverleaf.com" target="_blank">riscoscloverleaf.com</a>, All rights reserved.</em>
+    <br>
+    {% endblock %}
+    </td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>

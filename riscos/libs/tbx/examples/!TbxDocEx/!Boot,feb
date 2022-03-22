@@ -1,0 +1,7 @@
+| Boot file for TBX Doc Ex
+
+IconSprites <Obey$Dir>.!Sprites
+
+Set TbxDocEx$Dir <Obey$Dir>
+Set Alias$RunType_010 Run <Obey$Dir>.!Run %%*0
+Set File$Type_010 "TbxDocEx"

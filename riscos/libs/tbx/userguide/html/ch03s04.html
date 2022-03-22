@@ -1,0 +1,22 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Building the application</title><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="TBX C++ toolbox library"><link rel="up" href="ch03.html" title="Chapter 3. Creating a minimal desktop application"><link rel="prev" href="ch03s03.html" title="Creating the application code"><link rel="next" href="ch04.html" title="Chapter 4. The core TBX classes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Building the application</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Creating a minimal desktop application</th><td width="20%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr></table><hr></div><div class="section" title="Building the application"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id36098783"></a>Building the application</h2></div></div></div><p>To build set the working directory to the <code class="filename">src</code> and open a task window (by pressing Ctrl+F12). You need to make sure there is enough memory for the compiler so issue the command <span class="command"><strong>WimpSlot</strong></span> -min 8192K.
+</p><p>The application can be built from the command line with;</p><p>
+<span class="command"><strong>gcc</strong></span> -o^.!RunImage -ITBX: -LTBX: -ltbx main.cc
+</p><p>To save typing download and use Make (available from www.riscos.info). And create the following makefile
+</p><pre class="programlisting">
+# Makefile for TBX Min
+
+CXXFLAGS = -O2 -Wall -mpoke-function-name -mthrowback -ITBX:
+
+LD = g++
+LDFLAGS = -LTBX: -ltbx -lstdc++ -static
+
+CCSRC = $(wildcard *.cc)
+OBJECTS = $(CCSRC:.cc=.o)
+
+^.!RunImage:	!RunImage,e1f
+	elf2aif !RunImage,e1f ^.!RunImage
+!RunImage,e1f:	$(OBJECTS)
+	$(LD) $(LDFLAGS) -o !RunImage,e1f $(OBJECTS)
+</pre><p>
+This makefile will compile all the C++ files in the current directory and link them to the tbx library. Additionally it passes the compiled application through the elf2aif process which means that the ELF program runner does not need to exist on the machine it runs on.
+</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Creating the application code </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. The core TBX classes</td></tr></table></div></body></html>
